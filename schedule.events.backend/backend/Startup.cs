@@ -28,6 +28,8 @@ namespace backend
         {
             services.AddControllers();
 
+            services.AddCors();
+
             services.AddDatabase(Configuration);
         }
 
@@ -42,6 +44,13 @@ namespace backend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:8080")
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .AllowAnyOrigin()
+                );
 
             app.UseAuthorization();
 

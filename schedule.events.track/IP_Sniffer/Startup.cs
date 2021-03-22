@@ -1,3 +1,4 @@
+using IP_Sniffer.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace IP_Sniffer
             services.AddControllers();
 
             services.AddCors();
+
+            services.AddDatabase(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

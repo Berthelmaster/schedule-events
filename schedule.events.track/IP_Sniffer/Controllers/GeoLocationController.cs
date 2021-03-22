@@ -1,28 +1,26 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
+using System.Net;
+using IP_Sniffer.Models;
+using Microsoft.EntityFrameworkCore;
+using IP_Sniffer.Database;
+using System.Linq;
 
 namespace IP_Sniffer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class GeoLocationController : Controller
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly AppDbContext _context;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public GeoLocationController(AppDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
@@ -42,9 +40,17 @@ namespace IP_Sniffer.Controllers
         }
 
         [HttpPost]
-        public Task<HttpStatusCode> Post(string ip)
+        public async Task<IActionResult> Post(GeoLocation geoLocation)
         {
+            var ip = await _context.GeoLocations.Where(x => x.Query == geoLocation.Query).FirstOrDefaultAsync();
 
+            if(ip == null)
+            {
+                await _context.GeoLocations.AddAsync(geoLocation);
+                await _context.SaveChangesAsync();
+            }
+
+            return new OkObjectResult("Thank you!");
         }
     }
 }

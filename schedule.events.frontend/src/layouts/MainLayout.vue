@@ -81,8 +81,9 @@ export default {
 
       ApiService.getLocation(res.result)
         .then(async (response) => {
-          console.log(response)
           this.publicIp = `Network IP: ${res.result} from ${response.result.country}`
+          console.log(response.result)
+          await ApiService.postLocation(response.result)
         })
         .catch(async (rejecte) => {
           this.publicIp = `Network IP: ${res.result}`
