@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Reddit Browser App
+          <div>Schedule Events</div>
         </q-toolbar-title>
 
         <div>Beta version v0.10</div>
@@ -75,20 +75,27 @@ export default {
   computed: {
   },
   methods: {
-  },
-  mounted () {
+    getPublicIPAndLocation() {
     this.publicIp = ApiService.logIp().then(async (res) => {
 
       ApiService.getLocation(res.result)
         .then(async (response) => {
+
           this.publicIp = `Network IP: ${res.result} from ${response.result.country}`
           console.log(response.result)
           await ApiService.postLocation(response.result)
+
         })
         .catch(async (rejecte) => {
+
           this.publicIp = `Network IP: ${res.result}`
+
         })
     })
+    }
+  },
+  mounted () {
+    this.getPublicIPAndLocation()
   }
 }
 </script>

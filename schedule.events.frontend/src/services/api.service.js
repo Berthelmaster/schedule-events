@@ -45,8 +45,20 @@ const ApiService = {
             })
         })
     },
-    async postLocation(geolocation) {
-        await axios.post('https://localhost:44387/geolocation', geolocation)
+    postLocation(geolocation) {
+        return new Promise(async (resolve, reject) => {
+            await axios.post('https://localhost:44387/geolocation', geolocation)
+            .then(res => {
+                return resolve({
+                    result: res.data
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej.data
+                })
+            })
+        })
     },
     getSubreddit(page) {
         return new Promise(async (resolve, reject) => {
