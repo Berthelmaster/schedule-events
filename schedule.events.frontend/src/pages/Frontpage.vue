@@ -4,7 +4,7 @@
       <div>Search</div>
       <div class="row">
         <div class="col-6">
-          <q-input rounded outlined v-model="inputContent" label="Some Subreddit Name"></q-input>
+          <q-input rounded outlined v-model="inputContent" label="Some Subreddit Name" @keydown.enter.prevent="GetPage(inputContent)"></q-input>
         </div>
         <q-btn push color="primary" label="Push" @click="GetPage(inputContent)"/>
       </div>

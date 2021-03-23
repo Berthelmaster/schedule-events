@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header>
       <q-toolbar>
         <q-btn
           flat
@@ -21,6 +21,7 @@
             </div>
           </q-toolbar-title>
         </div>
+        <q-img src="../assets/water.jpg" class="header-image absolute-top"></q-img>
     </q-header>
 
       <q-drawer
@@ -73,13 +74,13 @@
           </q-list>
         </q-scroll-area>
 
-        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+        <q-img class="absolute-top" src="../assets/water.jpg" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
             <div class="text-weight-bold">Razvan Stoenescu</div>
-            <div>@rstoenescu</div>
+            <div>@User-name</div>
           </div>
         </q-img>
       </q-drawer>
@@ -132,3 +133,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .header-image {
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+    filter: grayscale(100%)
+  }
+</style>
