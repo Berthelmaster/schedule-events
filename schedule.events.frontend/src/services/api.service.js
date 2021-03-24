@@ -3,6 +3,8 @@ const { default: axios } = require("axios")
 let trackApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44387/' : 'https://track.linkancestors.com'
 let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44364/' : 'https://api.linkancestors.com'
 
+// Test
+
 const ApiService = {
     logIp() {
         return new Promise(async (resolve, reject) => {
@@ -24,7 +26,7 @@ const ApiService = {
             await axios.get(`https://ipapi.co/${ip}/json/`)
             .then(res => {
                 console.log(res)
-                console.log(res.status == '200')
+                console.log(res.status == 200)
                 if(res.data.status == 'success'){
                     console.log('resolving...')
                     return resolve({
