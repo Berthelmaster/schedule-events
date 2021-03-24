@@ -8,7 +8,6 @@ using System.Net;
 using IP_Sniffer.Models;
 using Microsoft.EntityFrameworkCore;
 using IP_Sniffer.Database;
-using System.Linq;
 
 namespace IP_Sniffer.Controllers
 {
