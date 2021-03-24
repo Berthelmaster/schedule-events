@@ -26,9 +26,7 @@ const ApiService = {
             await axios.get(`https://ipapi.co/${ip}/json/`)
             .then(res => {
                 console.log(res)
-                console.log(res.status == 200)
-                if(res.data.status == 'success'){
-                    console.log('resolving...')
+                if(res.status == 200){
                     return resolve({
                         result: res.data
                     })
