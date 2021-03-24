@@ -41,7 +41,7 @@ namespace IP_Sniffer.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(GeoLocation geoLocation)
         {
-            var ip = await _context.GeoLocations.Where(x => x.Query == geoLocation.Query).FirstOrDefaultAsync();
+            var ip = await _context.GeoLocations.Where(x => x.Ip == geoLocation.Ip).FirstOrDefaultAsync();
 
             if(ip == null)
             {
