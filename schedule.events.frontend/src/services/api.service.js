@@ -21,7 +21,7 @@ const ApiService = {
     },
     getLocation(ip) {
         return new Promise(async (resolve, reject) => {
-            await axios.get(`https://ip-api.com/json/${ip}`)
+            await axios.get(`https://ipapi.co/${ip}/json/`)
             .then(res => {
                 console.log(res.data.status)
                 if(res.data.status == 'success'){
