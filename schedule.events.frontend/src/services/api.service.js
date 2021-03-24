@@ -1,6 +1,7 @@
 const { default: axios } = require("axios")
 
-
+let trackApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44387/' : 'https://track.linkancestors.com'
+let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44364/' : 'https://api.linkancestors.com'
 
 const ApiService = {
     logIp() {

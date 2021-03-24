@@ -13,7 +13,7 @@ using System.Linq;
 namespace IP_Sniffer.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("")]
     public class GeoLocationController : Controller
     {
         private readonly AppDbContext _context;
