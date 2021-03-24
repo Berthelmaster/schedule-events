@@ -6,7 +6,7 @@ let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:443
 const ApiService = {
     logIp() {
         return new Promise(async (resolve, reject) => {
-            await axios.get('https://track.linkancestors.com/weatherforecast')
+            await axios.get(trackApi)
             .then(res => {
                 return resolve({
                     result: res.data
@@ -48,7 +48,7 @@ const ApiService = {
     },
     postLocation(geolocation) {
         return new Promise(async (resolve, reject) => {
-            await axios.post('https://localhost:44387/geolocation', geolocation)
+            await axios.post(trackApi, geolocation)
             .then(res => {
                 return resolve({
                     result: res.data
