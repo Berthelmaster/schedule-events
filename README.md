@@ -23,3 +23,7 @@ _________________________________
 
 _________________________________
 
+
+| Version | Docs | Examples |
+| ------- | ---- | -------- |
+| [HEAD](DEVELOPMENT.md#install-pipeline) | [Docs @ HEAD](/docs/README.md) | [Examples @ HEAD](/examples) |
