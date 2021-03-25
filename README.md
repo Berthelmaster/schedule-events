@@ -24,6 +24,6 @@ _________________________________
 _________________________________
 
 
-| Version | Docs | Examples |
-| ------- | ---- | -------- |
+| Pipeline | Build |
+| ------- | ------- |
 | [HEAD](DEVELOPMENT.md#install-pipeline) | [Docs @ HEAD](/docs/README.md) | [Examples @ HEAD](/examples) |
