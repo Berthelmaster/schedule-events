@@ -3,11 +3,12 @@
 ## Azure piplines
 
 <h4>WebUI</h4>
---------------------------------
+
+________________________________
 
 [![Frontend](https://dev.azure.com/berthel0802/Schedule-Events-Pipeline/_apis/build/status/Schedule-Events-Frontend?branchName=master)](https://dev.azure.com/berthel0802/Schedule-Events-Pipeline/_build/latest?definitionId=15&branchName=master)
 
---------------------------------
+_________________________________
 
 <h4>Server</h4>
 
