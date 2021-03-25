@@ -2,6 +2,8 @@
 
 ## Azure piplines
 
+Azure pipelines for the 3 projects, that run independently.
+
 ________________________________
 <h4>WebUI</h4>
 
