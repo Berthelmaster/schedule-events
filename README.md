@@ -26,4 +26,5 @@ _________________________________
 
 | Pipeline | Build |
 | ------- | ------- |
-| [HEAD](DEVELOPMENT.md#install-pipeline) | [Docs @ HEAD](/docs/README.md) | [Examples @ HEAD](/examples) |
+| Web.UI | [![Frontend](https://dev.azure.com/berthel0802/Schedule-Events-Pipeline/_apis/build/status/Schedule-Events-Frontend?branchName=master)](https://dev.azure.com/berthel0802/Schedule-Events-Pipeline/_build/latest?definitionId=15&branchName=master)
+ |
