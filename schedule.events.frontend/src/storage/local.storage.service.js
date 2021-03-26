@@ -4,9 +4,10 @@ const localStorageService = {
     
         // `item` is an object which contains the original value
         // as well as the time when it's supposed to expire
+        // ttl is in minutes
         const item = {
             value: value,
-            expiry: now.getTime() + ttl,
+            expiry: now.getTime() + ttl*60000,
         }
         localStorage.setItem(key, JSON.stringify(item))
     },

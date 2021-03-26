@@ -1,9 +1,12 @@
 const { default: axios } = require("axios")
 
-let trackApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44387/' : 'https://track.linkancestors.com'
-let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44364/' : 'https://api.linkancestors.com'
-
+/*let trackApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44387/' : 'https://track.linkancestors.com'
+/*let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44364/' : 'https://api.linkancestors.com'
+*/
 // Test
+
+let trackApi = 'https://track.linkancestors.com'
+let backendApi = 'https://api.linkancestors.com'
 
 const ApiService = {
     logIp() {
@@ -25,14 +28,11 @@ const ApiService = {
         return new Promise(async (resolve, reject) => {
             await axios.get(`https://ipapi.co/${ip}/json/`)
             .then(res => {
-                console.log(res)
                 if(res.status == 200){
                     return resolve({
                         result: res.data
                     })
                 }else{
-                    console.log('qwdqw')
-                    console.log(res.data.status)
                     return reject({
                         result: res.data
                     })
@@ -40,7 +40,6 @@ const ApiService = {
                 
             })
             .catch(rej => {
-                console.log('rejecting...')
                 return reject({
                     result: res.data
                 })

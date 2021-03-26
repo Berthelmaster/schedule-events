@@ -88,6 +88,8 @@
 
 <script>
 import ApiService from '../services/api.service';
+import localStorageService from '../storage/local.storage.service'
+import LocalStaticNames from '../storage/storage.static.names'
 import { date } from 'quasar'
 import { Platform } from 'quasar'
 
@@ -98,7 +100,8 @@ export default {
     return {
       leftDrawerOpen: false,
       publicIp: null,
-      todaysdate: null
+      todaysdate: null,
+      country_name: null
     }
   },
   computed: {
@@ -107,11 +110,12 @@ export default {
     getPublicIPAndLocation() {
     this.publicIp = ApiService.logIp().then(async (res) => {
 
-      await ApiService.getLocation(res.result)
+      localStorageService.getWithExpiry(LocalStaticNames.COUNTRY_NAME) == null ? await ApiService.getLocation(res.result)
         .then(async (response) => {
 
-          this.publicIp = `Network IP: ${res.result} from ${response.result.country}`
-          console.log(response.result)
+          this.result_country = response.result.country_name
+          localStorageService.setWithExpiry(LocalStaticNames.COUNTRY_NAME, response.result.country_name, 60)
+          this.publicIp = `Network IP: ${res.result} from ${response.result.country_name}`
           await ApiService.postLocation(response.result)
 
         })
@@ -119,7 +123,7 @@ export default {
 
           this.publicIp = `Network IP: ${res.result}`
 
-        })
+        }) : localStorageService.setWithExpiry(LocalStaticNames.COUNTRY_NAME, this.country_name, 60)
     })
     },
     todaysDate() {
