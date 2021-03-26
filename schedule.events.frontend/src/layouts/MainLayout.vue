@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header>
-      <q-toolbar>
+      <q-toolbar class="q-header-resize">
         <q-btn
           flat
           dense
@@ -10,17 +10,10 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
+        <q-toolbar-title>Schedule Events</q-toolbar-title>
+        <div class="text-subtitle1" v-if="$q.platform.is.desktop">{{ todaysdate }}</div>
+
         </q-toolbar>
-        <div class="q-px-lg q-pt-xl q-mb-md">
-          <q-toolbar-title>
-            <div class="row">
-              <div>Schedule Events</div>
-              <q-space />
-              <q-btn class="q-mr-sm" color="secondary" icon-right="mail" label="Login" />
-              <q-btn class="q-ml-sm" color="secondary" icon-right="mail" label="Register" />
-            </div>
-          </q-toolbar-title>
-        </div>
         <q-img src="../assets/water.jpg" class="header-image absolute-top"></q-img>
     </q-header>
 
@@ -74,7 +67,7 @@
           </q-list>
         </q-scroll-area>
 
-        <q-img class="absolute-top" src="../assets/water.jpg" style="height: 150px">
+        <q-img class="absolute-top" src="../assets/water.jpg" style="height: 150px; filter: grayscale(65%)">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
@@ -95,7 +88,8 @@
 
 <script>
 import ApiService from '../services/api.service';
-
+import { date } from 'quasar'
+import { Platform } from 'quasar'
 
 export default {
   name: 'MainLayout',
@@ -103,7 +97,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      publicIp: null
+      publicIp: null,
+      todaysdate: null
     }
   },
   computed: {
@@ -112,7 +107,7 @@ export default {
     getPublicIPAndLocation() {
     this.publicIp = ApiService.logIp().then(async (res) => {
 
-      ApiService.getLocation(res.result)
+      await ApiService.getLocation(res.result)
         .then(async (response) => {
 
           this.publicIp = `Network IP: ${res.result} from ${response.result.country}`
@@ -126,10 +121,15 @@ export default {
 
         })
     })
+    },
+    todaysDate() {
+      let timestamp = Date.now()
+      this.todaysdate = date.formatDate(timestamp, 'dddd D MMMM')
     }
   },
   mounted () {
     this.getPublicIPAndLocation()
+    this.todaysDate()
   }
 }
 </script>
@@ -140,5 +140,8 @@ export default {
     z-index: -1;
     opacity: 0.2;
     filter: grayscale(100%)
+  }
+  .q-header-resize {
+    min-height: 150px !important;
   }
 </style>
