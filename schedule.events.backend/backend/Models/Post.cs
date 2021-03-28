@@ -8,6 +8,10 @@ namespace backend.Models
         public string Content { get; set; }
         public DateTime Date { get; set; }
         public bool IsPublic { get; set; }
+        public bool IsPublished { get; set; }
+
+
+        //EF Relations
         public User User { get; set; }
         public int UserId { get; set; }
     }
