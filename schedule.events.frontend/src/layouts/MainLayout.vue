@@ -139,10 +139,10 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
     this.getPublicIPAndLocation()
     this.todaysDate()
-    this.checkFrontendVersion()
+    await this.checkFrontendVersion()
   }
 }
 </script>
