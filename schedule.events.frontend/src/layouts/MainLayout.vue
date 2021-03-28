@@ -131,6 +131,8 @@ export default {
       this.todaysdate = date.formatDate(timestamp, 'dddd D MMMM')
     },
     async checkFrontendVersion(){
+
+      console.log('Checking for updates...')
       let version = await ApiService.getFrontendVersion()
 
       if(version != localStorageService.getWithExpiry(LocalStaticNames.FRONTEND_VERSION)){
@@ -138,6 +140,8 @@ export default {
         localStorageService.setWithExpiry(LocalStaticNames.FRONTEND_VERSION, version, 1440)
         console.log(`New version: ${localStorageService.getWithExpiry(LocalStaticNames.FRONTEND_VERSION)}`)
         location.reload()
+      }else{
+        console.log('You are running the latest version!')
       }
     }
   },
