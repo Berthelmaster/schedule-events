@@ -136,7 +136,7 @@ export default {
       console.log(version)
       if(version != getWithExpiry(LocalStaticNames.FRONTEND_VERSION)){
         console.log(`Updating from current version: ${getWithExpiry(LocalStaticNames.FRONTEND_VERSION)}`)
-        setWithExpiry(LocalStaticNames.FRONTEND_VERSION, LocalStaticNames.FRONTEND_VERSION, 1440)
+        setWithExpiry(LocalStaticNames.FRONTEND_VERSION, version, 1440)
         console.log(`New version: ${getWithExpiry(LocalStaticNames.FRONTEND_VERSION)}`)
         location.reload()
       }
