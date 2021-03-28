@@ -6,6 +6,7 @@ namespace backend.Models
     public class User
     {
         public int Id { get; set; }
+        public string FullName { get; set; }
         [JsonIgnore]
         public byte[] Hash { get; set; }
         [JsonIgnore]
