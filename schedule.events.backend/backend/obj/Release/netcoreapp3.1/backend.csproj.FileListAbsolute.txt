@@ -31,7 +31,6 @@ D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netc
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Pomelo.JsonObject.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\System.Collections.Immutable.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.csprojAssemblyReference.cache
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.AssemblyInfoInputs.cache
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.AssemblyInfo.cs
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.csproj.CoreCompileInputs.cache
