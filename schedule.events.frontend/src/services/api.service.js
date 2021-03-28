@@ -75,6 +75,12 @@ const ApiService = {
                 })
             })
         })
+    },
+    async getFrontendVersion(){
+        return await axios.get(`${backendApi}/Version`)
+            .then(res => {
+                return res.data
+            })
     }
 }
 

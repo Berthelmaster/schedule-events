@@ -129,6 +129,14 @@ export default {
     todaysDate() {
       let timestamp = Date.now()
       this.todaysdate = date.formatDate(timestamp, 'dddd D MMMM')
+    },
+    async checkFrontendVersion(){
+      let version = await ApiService.getFrontendVersion()
+
+      console.log(version)
+      if(version != 'currentVersion'){
+
+      }
     }
   },
   mounted () {
