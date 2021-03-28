@@ -142,6 +142,7 @@ export default {
   mounted () {
     this.getPublicIPAndLocation()
     this.todaysDate()
+    this.checkFrontendVersion()
   }
 }
 </script>
