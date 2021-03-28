@@ -63,7 +63,7 @@ const ApiService = {
     },
     getSubreddit(page) {
         return new Promise(async (resolve, reject) => {
-            await axios.get(`http://www.reddit.com/r/${page}/new.json?sort=best`)
+            await axios.get(`https://www.reddit.com/r/${page}/new.json?sort=best`)
             .then(res => {
                 return resolve({
                     result: res.data
