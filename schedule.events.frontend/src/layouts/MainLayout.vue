@@ -133,7 +133,6 @@ export default {
     async checkFrontendVersion(){
       let version = await ApiService.getFrontendVersion()
 
-      console.log(version)
       if(version != localStorageService.getWithExpiry(LocalStaticNames.FRONTEND_VERSION)){
         console.log(`Updating from current version: ${localStorageService.getWithExpiry(LocalStaticNames.FRONTEND_VERSION)}`)
         localStorageService.setWithExpiry(LocalStaticNames.FRONTEND_VERSION, version, 1440)
