@@ -308,7 +308,6 @@ export default {
       this.mapCities(cities.data.data)
     },
     mapCities(cities){
-      console.log(cities)
       if(this.cityList == null || this.cityList == undefined) return;
       this.cityList = cities
     }
