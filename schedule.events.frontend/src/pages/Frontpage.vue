@@ -305,7 +305,12 @@ export default {
       let cities = await ApiService.getcities(v)
 
       // Map cities
-      this.cityList = cities.data.data
+      this.mapCities(cities.data.data)
+    },
+    mapCities(cities){
+      console.log(cities)
+      if(this.cityList == null || this.cityList == undefined) return;
+      this.cityList = cities
     }
 
   },
