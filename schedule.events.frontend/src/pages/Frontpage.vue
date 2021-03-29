@@ -1,22 +1,5 @@
 <template>
-  <q-page class="flex-center q-pa-sm">
-    <div>
-      <div>Search</div>
-      <div class="row">
-        <div class="col-6">
-          <q-input rounded outlined v-model="inputContent" label="Some Subreddit Name" @keydown.enter.prevent="GetPage(inputContent)"></q-input>
-        </div>
-        <q-btn push color="primary" label="Push" @click="GetPage(inputContent)"/>
-      </div>
-    </div>
-    <div>
-      <h5>Browsing: {{this.subSelected}}</h5>
-
-      <div>
-        {{this.content}}
-      </div>
-    </div>
-
+  <q-page class="flex-center q-pa-sm bg-grey-3">
     
   </q-page>
 </template>
@@ -29,22 +12,16 @@ export default {
 
   data () {
     return {
-      subSelected: 'Nothing selected...',
-      content: null,
-      inputContent: ''
     }
   },
   methods: {
-    GetPage(content) {
-      ApiService.getSubreddit(content).then(async (res) => {
-        this.subSelected = content
-        this.content = res.result
-      })
-      .catch(async (rej) => {
-        this.subSelected = 'Nothing selected...'
-        this.content = null
-      })
-    }
+
+  },
+  mounted () {
+
   }
 }
 </script>
+
+<style lang="scss">
+</style>

@@ -10,8 +10,12 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title>Schedule Events</q-toolbar-title>
-        <div class="text-subtitle1" v-if="$q.platform.is.desktop">{{ todaysdate }}</div>
+        <q-toolbar-title @click="$router.push('/')" style="cursor: pointer">Schedule Events</q-toolbar-title>
+        <div class="q-pa-md">
+          <div class="text-subtitle1" v-if="$q.platform.is.desktop">{{ todaysdate }}</div>
+          <q-btn @click="$router.push('/login')" push stretch color="accent" label="Login" />
+        </div>
+        
 
         </q-toolbar>
         <q-img src="../assets/water.jpg" class="header-image absolute-top"></q-img>
@@ -19,7 +23,6 @@
 
       <q-drawer
         v-model="leftDrawerOpen"
-        show-if-above
         :width="200"
         :breakpoint="400"
       >
@@ -67,7 +70,7 @@
           </q-list>
         </q-scroll-area>
 
-        <q-img class="absolute-top" src="../assets/water.jpg" style="height: 150px; filter: grayscale(65%)">
+        <q-img class="absolute-top" src="../assets/graybg.jpg" style="height: 150px; filter:">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
