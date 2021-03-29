@@ -298,8 +298,14 @@ export default {
   },
   methods: {
     async onCountryChanged(v){
+      // Reset city list
+      this.cityList = Array()
+
+      // Fetch cities
       let cities = await ApiService.getcities(v)
-      console.log(cities)
+
+      // Map cities
+      this.cityList = cities.data.data
     }
 
   },
