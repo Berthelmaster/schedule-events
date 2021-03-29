@@ -82,8 +82,8 @@ const ApiService = {
                 return res.data
             })
     },
-    async getcities(selected){
-        return await axios.post('https://countriesnow.space/api/v0.1/countries/cities', {country: selected})
+    async getcities(selected_country){
+        return await axios.post('https://countriesnow.space/api/v0.1/countries/cities', {country: selected_country})
     }
 }
 
