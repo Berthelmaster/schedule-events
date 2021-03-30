@@ -11,7 +11,7 @@
           </div>
           <div class="col">
             <div v-if="cityList.length > 0">
-              <q-select rounded outlined v-model="selected_city" :options="cityList" label="Select country" />
+              <q-select rounded outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select country" />
             </div>
             <div v-if="cityList.length <= 0">
               <q-select rounded outlined v-model="selected_city" disable :options="cityList" label="Select city" />
