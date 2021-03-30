@@ -10,7 +10,7 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title @click="$router.push('')" style="cursor: pointer">Schedule Events</q-toolbar-title>
+        <q-toolbar-title @click="$router.push('/')" style="cursor: pointer">Schedule Events</q-toolbar-title>
         <div class="q-pa-md">
           <div class="text-subtitle1" v-if="$q.platform.is.desktop">{{ todaysdate }}</div>
           <q-btn @click="$router.push('/login')" push stretch color="accent" label="Login" />
