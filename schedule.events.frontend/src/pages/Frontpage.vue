@@ -43,7 +43,7 @@
         </ul>
       </div>
       <div>
-        <q-btn class="" color="blue" outlined label="Create event" />
+        <q-btn class="btn-full-width absolute-bottom" @click="$router.push('/create-event')" color="blue" outlined label="Create event" />
       </div>
     </div>
   </q-page>
@@ -341,4 +341,8 @@ export default {
 </script>
 
 <style lang="scss">
+.btn-full-width{
+  width: 100%;
+  margin-bottom: 5px;
+}
 </style>
