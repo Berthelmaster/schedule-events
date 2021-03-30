@@ -36,9 +36,11 @@
         </div>
       </div>
       <div class="content-events">
-        <li v-for="event in test_events" :key="event.id">
-          {{event.name}}
-        </li>
+        <ul>
+          <li v-for="event in test_events" :key="event.id">
+            {{event.name}}
+          </li>
+        </ul>
       </div>
       <div>
         <q-btn class="" color="blue" outlined label="Create event" />
