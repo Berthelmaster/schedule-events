@@ -83,3 +83,4 @@ D:\Repositories\schedule-events\schedule.events.track\IP_Sniffer\obj\Debug\netco
 D:\Repositories\schedule-events\schedule.events.track\IP_Sniffer\obj\Debug\netcoreapp3.1\IP_Sniffer.RazorTargetAssemblyInfo.cache
 D:\Repositories\schedule-events\schedule.events.track\IP_Sniffer\obj\Debug\netcoreapp3.1\IP_Sniffer.csproj.CopyComplete
 D:\Repositories\schedule-events\schedule.events.track\IP_Sniffer\obj\Debug\netcoreapp3.1\IP_Sniffer.genruntimeconfig.cache
+D:\Repositories\schedule-events\schedule.events.track\IP_Sniffer\obj\Debug\netcoreapp3.1\IP_Sniffer.csprojAssemblyReference.cache
