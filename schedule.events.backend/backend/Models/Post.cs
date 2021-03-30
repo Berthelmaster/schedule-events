@@ -9,6 +9,8 @@ namespace backend.Models
         public DateTime Date { get; set; }
         public bool IsPublic { get; set; }
         public bool IsPublished { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
 
 
         //EF Relations

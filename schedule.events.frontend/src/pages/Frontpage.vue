@@ -2,7 +2,7 @@
   <q-page class="flex-center q-pa-sm bg-grey-3">
     <div class="">
       <div>
-        <div class="row">
+        <div v-if="$q.platform.is.desktop" class="row">
           <div class="col">
             <h3 style="margin-top: 0px">Search</h3>
           </div>
@@ -12,6 +12,22 @@
           <div class="col">
             <div v-if="cityList.length > 0">
               <q-select rounded outlined v-model="selected_city" :options="cityList" label="Select country" />
+            </div>
+            <div v-if="cityList.length <= 0">
+              <q-select rounded outlined v-model="selected_city" disable :options="cityList" label="Select city" />
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <div class="col">
+            <h3 style="margin-top: 0px; margin-bottom: 5px">Search</h3>
+          </div>
+          <div class="col" style="margin-top: 0px">
+            <q-select rounded outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
+          </div>
+          <div class="col" style="margin-top: 0px">
+            <div v-if="cityList.length > 0">
+              <q-select rounded outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select country" />
             </div>
             <div v-if="cityList.length <= 0">
               <q-select rounded outlined v-model="selected_city" disable :options="cityList" label="Select city" />
@@ -33,6 +49,7 @@
 
 <script>
 import ApiService from '../services/api.service';
+import { Platform } from 'quasar'
 
 export default {
   name: 'PageIndex',
@@ -307,6 +324,10 @@ export default {
     mapCities(cities){
       if(this.cityList == null || this.cityList == undefined) return;
       this.cityList = cities
+    },
+    async onCityChanged(v){
+      console.log(this.selected_country)
+      console.log(this.selected_city)
     }
 
   },
