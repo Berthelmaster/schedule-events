@@ -324,6 +324,7 @@ export default {
     mapCities(cities){
       if(this.cityList == null || this.cityList == undefined) return;
       this.cityList = cities
+      this.selected_city = cities[0]
     },
     async onCityChanged(v){
       console.log(this.selected_country)
