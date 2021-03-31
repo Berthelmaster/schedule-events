@@ -1,5 +1,5 @@
 <template>
-    <q-page class="window-height window-width row justify-center items-center bg-grey-3" style="padding: 5px;">
+    <q-page class="window-width row justify-center items-center bg-grey-3" style="padding: 5px;">
         <div class="column relative-position mobile-width">
         <div class="row">
             <h5 class="text-h5 text-black q-my-md"><b>Create Event</b></h5>
