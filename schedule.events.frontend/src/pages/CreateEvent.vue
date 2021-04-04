@@ -15,6 +15,15 @@
                     <q-select square filled outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city"/>
                 </div>
                 <div>
+                  <q-uploader
+                    url="http://localhost:8080/upload"
+                    color="teal"
+                    flat
+                    style="width: inherit"
+                    label="Upload event image"
+                  />
+                </div>
+                <div>
                     <q-editor v-model="content" min-height="8rem" />
                 </div>
                 </q-form>
@@ -288,7 +297,8 @@ export default {
       ],
       selected_city: 'default',
       cityList: Array(),
-      isDesktop: !this.$q.platform.is.mobile
+      isDesktop: !this.$q.platform.is.mobile,
+      file: ""
     }
   },
   methods: {
