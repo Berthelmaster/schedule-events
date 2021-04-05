@@ -42,7 +42,7 @@ namespace backend.Controllers
                 {
                     var worthyfilename = file.ContentDisposition;
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine("/data");
+                    var fullPath = Path.Combine("/home/pi/images");
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
