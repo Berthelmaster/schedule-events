@@ -118,6 +118,10 @@ export default {
   },
   computed: {
   },
+  watch: {
+    // call again the method if the route changes
+    '$route': 'assignProfile',
+  },
   methods: {
     getPublicIPAndLocation() {
     this.publicIp = ApiService.logIp().then(async (res) => {
@@ -156,12 +160,10 @@ export default {
         console.log('You are running the latest version!')
       }
     },
-    async assignProfile(){
+    assignProfile(){
       let user = localStorageService.getWithExpiry(LocalStaticNames.USER_INFORMATION)
 
       user == null ? this.profile = null : this.profile = user
-
-      console.log(this.profile)
     },
     isLoggedIn(){
       return localStorageService.isLoggedIn()
@@ -175,8 +177,10 @@ export default {
     this.getPublicIPAndLocation()
     this.todaysDate()
     await this.checkFrontendVersion()
-    await this.assignProfile()
-  }
+    this.assignProfile()
+  },
+  updated() {
+  },
 }
 </script>
 
