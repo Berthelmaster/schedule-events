@@ -42,12 +42,12 @@ namespace backend.Controllers
                 {
                     var worthyfilename = file.ContentDisposition;
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine("/world");
+                    var fullPath = Path.Combine("/app/world");
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
                     }
-                    return new OkResult();
+                    return new OkObjectResult(fullPath);
                 }
                 else
                 {
