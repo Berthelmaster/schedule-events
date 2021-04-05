@@ -86,11 +86,11 @@ const ApiService = {
         return await axios.post('https://countriesnow.space/api/v0.1/countries/cities', {country: selected_country})
     },
     async register(details){
-        await axios.post('https://localhost:44364/Authentication/register', details)
+        await axios.post(`${backendApi}/Authentication/register`, details)
     },
     async login(details){
         return new Promise(async (resolve, reject) => {
-            await axios.post('https://localhost:44364/Authentication/login', details)
+            await axios.post(`${backendApi}/Authentication/login`, details)
                 .then(res => {
                 res.data 
                 })
