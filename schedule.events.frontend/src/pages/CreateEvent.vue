@@ -16,7 +16,7 @@
                 </div>
                 <div>
                   <q-uploader
-                    url="https://localhost:44364/upload"
+                    url="https://api.linkancestors.com/upload"
                     color="teal"
                     flat
                     style="width: inherit"
