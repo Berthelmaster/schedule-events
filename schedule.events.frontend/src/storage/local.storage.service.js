@@ -42,6 +42,9 @@ const localStorageService = {
         if(this.getToken() == null) return false
 
         return true
+    },
+    logoutUser(){
+        localStorage.removeItem("user_information")
     }
 }
 

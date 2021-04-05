@@ -13,7 +13,8 @@
         <q-toolbar-title @click="$router.push('/')" style="cursor: pointer">Schedule Events</q-toolbar-title>
         <div class="q-pa-md">
           <div class="text-subtitle1" v-if="$q.platform.is.desktop">{{ todaysdate }}</div>
-          <q-btn @click="$router.push('/login')" push stretch color="accent" label="Login" />
+          <q-btn v-if="!isLoggedIn()" @click="$router.push('/login')" push stretch color="accent" label="Login" />
+          <q-btn v-else @click="logOut()" push stretch color="accent" label="Sign out" />
         </div>
         
 
@@ -64,19 +65,28 @@
               </q-item-section>
 
               <q-item-section>
-                About & Donate
+                About | Donate
               </q-item-section>
             </q-item>
           </q-list>
         </q-scroll-area>
 
-        <q-img class="absolute-top" src="../assets/graybg.jpg" style="height: 150px; filter:">
+        <q-img v-if="this.profile == null" class="absolute-top" src="../assets/graybg.jpg" style="height: 150px; filter:">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
-            <div class="text-weight-bold">Razvan Stoenescu</div>
-            <div>@User-name</div>
+            <div class="text-weight-bold">John Hancock</div>
+            <div>John@Hancock.com</div>
+          </div>
+        </q-img>
+        <q-img v-else class="absolute-top" src="../assets/graybg.jpg" style="height: 150px; filter:">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+            </q-avatar>
+            <div class="text-weight-bold">{{profile.fullName}}</div>
+            <div>{{profile.email}}</div>
           </div>
         </q-img>
       </q-drawer>
@@ -102,7 +112,8 @@ export default {
       leftDrawerOpen: false,
       publicIp: null,
       todaysdate: null,
-      country_name: null
+      country_name: null,
+      profile: null
     }
   },
   computed: {
@@ -144,12 +155,27 @@ export default {
       }else{
         console.log('You are running the latest version!')
       }
+    },
+    async assignProfile(){
+      let user = localStorageService.getWithExpiry(LocalStaticNames.USER_INFORMATION)
+
+      user == null ? this.profile = null : this.profile = user
+
+      console.log(this.profile)
+    },
+    isLoggedIn(){
+      return localStorageService.isLoggedIn()
+    },
+    logOut(){
+      localStorageService.logoutUser()
+      location.reload()
     }
   },
   async mounted () {
     this.getPublicIPAndLocation()
     this.todaysDate()
     await this.checkFrontendVersion()
+    await this.assignProfile()
   }
 }
 </script>
