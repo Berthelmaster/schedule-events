@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     async Login(){
-      ApiService.login({
+      await ApiService.login({
         email: this.email,
         password: this.password
       })
