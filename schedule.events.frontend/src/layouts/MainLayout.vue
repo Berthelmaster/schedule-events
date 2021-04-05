@@ -28,43 +28,43 @@
       >
         <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
           <q-list padding>
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple @click="$router.push('/')">
               <q-item-section avatar>
-                <q-icon name="inbox" />
+                <q-icon name="today" />
               </q-item-section>
 
               <q-item-section>
-                Inbox
+                Browse Events
               </q-item-section>
             </q-item>
 
-            <q-item active clickable v-ripple>
+            <q-item clickable v-ripple @click="$router.push('/create-event')">
               <q-item-section avatar>
-                <q-icon name="star" />
+                <q-icon name="message" />
               </q-item-section>
 
               <q-item-section>
-                Star
+                Create Event
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple @click="$router.push('/profile')">
               <q-item-section avatar>
-                <q-icon name="send" />
+                <q-icon name="face" />
               </q-item-section>
 
               <q-item-section>
-                Send
+                Profile
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple @click="$router.push('/about-and-donate')">
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="info" />
               </q-item-section>
 
               <q-item-section>
-                Drafts
+                About & Donate
               </q-item-section>
             </q-item>
           </q-list>
