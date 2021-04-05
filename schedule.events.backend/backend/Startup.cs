@@ -32,6 +32,8 @@ namespace backend
 
             services.AddCors();
 
+            services.AddObjectLifetime();
+
             services.AddDatabase(Configuration);
         }
         // Test

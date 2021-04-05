@@ -16,7 +16,7 @@
                 </div>
                 <div>
                   <q-uploader
-                    url="http://localhost:8080/upload"
+                    url="https://localhost:44364/upload"
                     color="teal"
                     flat
                     style="width: inherit"

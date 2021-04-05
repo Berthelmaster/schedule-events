@@ -9,11 +9,11 @@
           <q-card-section>
             <q-form class="q-gutter-md">
               <q-input square filled clearable v-model="fullname" type="text" label="Full name" />
-              <q-input square filled v-model="date" mask="date" label="Birth">
+              <q-input square filled v-model="birth" mask="date" label="Birth">
                   <template v-slot:append>
                     <q-icon name="event" class="cursor-pointer">
                     <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-                        <q-date v-model="date">
+                        <q-date v-model="birth">
                         <div class="row items-center justify-end">
                             <q-btn v-close-popup label="Close" color="primary" flat />
                         </div>
@@ -27,7 +27,7 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-md">
-            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" />
+            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" @click="Register()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
             <p class="text-grey-6">Already reigistered? <router-link to="/login">Go to Login</router-link></p>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import ApiService from '../services/api.service';
 
 export default {
   name: 'PageIndex',
@@ -48,10 +49,19 @@ export default {
         email: '',
         password: '',
         fullname: '',
-        date: '2019/02/01'
+        birth: '2019/02/01'
     }
   },
   methods: {
+    async Register(){
+      let attempt = await ApiService.register({
+        email: this.email,
+        password: this.password,
+        fullname: this.fullname,
+        birth: this.birth
+      })
+      console.log(attempt);
+    }
 
   },
   mounted () {

@@ -13,7 +13,7 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-md">
-            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" />
+            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" @click="Login()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
             <p class="text-grey-6">Not reigistered? <router-link to="/register">Go to Register</router-link></p>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import ApiService from '../services/api.service';
 
 export default {
   name: 'PageIndex',
@@ -36,7 +37,18 @@ export default {
     }
   },
   methods: {
-
+    async Login(){
+      ApiService.login({
+        email: this.email,
+        password: this.password
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(rej => {
+        console.log(rej)
+      })
+    }
   },
   mounted () {
 

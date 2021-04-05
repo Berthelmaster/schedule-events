@@ -43,11 +43,24 @@ namespace backend.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<ActionResult> CreatePost(Post post)
+        public async Task<ActionResult> CreatePost(Post post, int userid)
         {
             if (post == null) return new BadRequestResult();
 
-            await _context.Posts.AddAsync(post);
+            var createpost = new Post
+            {
+                Title = post.Title,
+                Content = post.Content,
+                Date = post.Date,
+                IsPublic = true,
+                IsPublished = true,
+                Country = post.Country,
+                City = post.City,
+                Image = post.Image,
+                UserId = userid
+            };
+
+            await _context.Posts.AddAsync(createpost);
             var saved = await _context.SaveChangesAsync();
 
             if (saved > 0) return new OkResult();
