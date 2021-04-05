@@ -31,20 +31,18 @@ namespace backend.Controllers
         {
             return Task.FromResult("Ok!");
         }
-
+        // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
         public async Task<ActionResult> UploadFile()
         {
             try
             {
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine("website", "storage");
                 if (file.Length > 0)
                 {
-                    var userid = _httpContextAccessor.HttpContext.Request.Cookies["userid"];
-                    var worthyfilename = file.ContentDisposition + userid;
+                    var worthyfilename = file.ContentDisposition;
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(folderName, worthyfilename);
+                    var fullPath = Path.Combine("/home/pi/websites/images", worthyfilename);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
