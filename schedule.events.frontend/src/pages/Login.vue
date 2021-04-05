@@ -26,6 +26,8 @@
 
 <script>
 import ApiService from '../services/api.service';
+import localStorageService from '../storage/local.storage.service'
+import LocalStaticNames from '../storage/storage.static.names'
 
 export default {
   name: 'PageIndex',
@@ -43,9 +45,12 @@ export default {
         password: this.password
       })
       .then(res => {
-        console.log(res)
+        // If Successful
+        localStorageService.setWithExpiry(LocalStaticNames.USER_INFORMATION, res, 14400) // 10 days expiration
+        
+        this.$router.push('/')
       })
-      .catch(rej => {
+      .catch(async rej => {
         console.log(rej)
       })
     }

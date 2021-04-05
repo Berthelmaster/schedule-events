@@ -91,11 +91,11 @@ const ApiService = {
     async login(details){
         return new Promise(async (resolve, reject) => {
             await axios.post(`${backendApi}/Authentication/login`, details)
-                .then(res => {
-                res.data 
+                .then(response => {
+                    return resolve(response.data)
                 })
-                .catch(rej => {
-                rej.data
+                .catch(reject => {
+                    return reject(reject.data)
                 })
         })
     }

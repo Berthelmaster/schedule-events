@@ -29,7 +29,11 @@
                 </q-form>
             </q-card-section>
             <q-card-actions class="q-px-md">
-                <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Create Event" />
+                <q-btn v-if="isLoggedIn()" unelevated color="light-green-7" size="lg" class="full-width" label="Create Event" />
+                <q-btn disable v-else unelevated color="light-green-7" size="lg" class="full-width" label="Create Event" />
+                <q-tooltip v-if="!isLoggedIn()" content-class="bg-purple" content-style="font-size: 16px">
+                  You must be logged in to create events
+                </q-tooltip>
             </q-card-actions>
             </q-card>
         </div>
@@ -39,6 +43,7 @@
 
 <script>
 import ApiService from '../services/api.service';
+import localStorageService from '../storage/local.storage.service'
 import { Platform } from 'quasar'
 
 export default {
@@ -320,6 +325,9 @@ export default {
     async onCityChanged(v){
       console.log(this.selected_country)
       console.log(this.selected_city)
+    },
+    isLoggedIn(){
+      return localStorageService.isLoggedIn()
     }
 
   },

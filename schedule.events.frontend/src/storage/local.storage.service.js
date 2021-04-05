@@ -30,6 +30,18 @@ const localStorageService = {
             return null
         }
         return item.value
+    },
+    getToken(){
+        let item = this.getWithExpiry("user_information")
+
+        if(item == null) return null
+
+        return item["token"]
+    },
+    isLoggedIn(){
+        if(this.getToken() == null) return false
+
+        return true
     }
 }
 
