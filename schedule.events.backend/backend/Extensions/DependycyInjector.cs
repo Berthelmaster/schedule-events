@@ -15,6 +15,7 @@ namespace backend.Extensions
     {
         public static void AddObjectLifetime(this IServiceCollection services)
         {
+            services.AddScoped<ITokenHandler, TokenHandler>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();

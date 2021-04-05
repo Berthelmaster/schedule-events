@@ -43,4 +43,7 @@ D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netc
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.pdb
 D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.genruntimeconfig.cache
-D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.csprojAssemblyReference.cache
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

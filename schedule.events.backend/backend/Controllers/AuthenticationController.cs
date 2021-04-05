@@ -3,6 +3,7 @@ using backend.Helpers;
 using backend.Interfaces;
 using backend.Models;
 using backend.Objects;
+using backend.Objects.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,11 +19,13 @@ namespace backend.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly ITokenHandler _tokenHandler;
 
-        public AuthenticationController(AppDbContext context, IPasswordHasher passwordHasher)
+        public AuthenticationController(AppDbContext context, IPasswordHasher passwordHasher, ITokenHandler tokenHandler)
         {
             _context = context;
             _passwordHasher = passwordHasher;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpPost("register")]
@@ -53,7 +56,7 @@ namespace backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(Login login)
+        public async Task<ActionResult<UserDTO>> Login(Login login)
         {
             var user = await _context.Users.Where(x => x.Email == login.Email).FirstOrDefaultAsync();
 
@@ -72,7 +75,11 @@ namespace backend.Controllers
                 return new BadRequestResult();
             }
 
-            return new OkObjectResult(user);
+            var token = await _tokenHandler.GenerateToken(user.Role, user.Email);
+
+            var userdto = new UserDTO(user, token);
+
+            return new OkObjectResult(userdto);
         }
     }
 }
