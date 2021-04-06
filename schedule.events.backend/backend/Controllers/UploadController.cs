@@ -63,7 +63,7 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument()
         {
-            string filePath = "/app/world";
+            string filePath = "/world";
             string fileName = "abc.txt";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
