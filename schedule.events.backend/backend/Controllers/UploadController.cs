@@ -77,7 +77,7 @@ namespace backend.Controllers
             };
             process.Start();
             await process.StandardInput.WriteLineAsync("ls");
-            var output = await process.StandardOutput.ReadLineAsync();
+            var output = await process.StandardOutput.ReadToEndAsync();
             Console.WriteLine(output);
 
             return new OkObjectResult(output);
