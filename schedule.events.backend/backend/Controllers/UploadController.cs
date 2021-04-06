@@ -67,7 +67,7 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument()
         {
-            string filePath = Path.Combine(_appEnvironment.ContentRootPath, "world/");
+            string filePath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
             string fileName = "SECaseBook8.pdf";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
