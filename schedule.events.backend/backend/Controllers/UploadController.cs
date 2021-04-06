@@ -37,19 +37,17 @@ namespace backend.Controllers
         }
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public async Task<ActionResult> UploadFile()
+        public ActionResult UploadFile()
         {
             try
             {
                 var file = Request.Form.Files[0];
                 if (file.Length > 0)
                 {
-                    var worthyfilename = file.ContentDisposition;
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     string fullPath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        await file.CopyToAsync(stream);
+                        file.CopyTo(stream);
                     }
                     return new OkObjectResult(fullPath);
                 }
