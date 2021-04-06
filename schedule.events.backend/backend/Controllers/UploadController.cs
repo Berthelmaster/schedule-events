@@ -46,7 +46,7 @@ namespace backend.Controllers
                 {
                     var worthyfilename = file.ContentDisposition;
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine("/world");
+                    string fullPath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
