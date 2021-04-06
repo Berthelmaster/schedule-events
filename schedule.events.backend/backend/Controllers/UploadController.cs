@@ -65,7 +65,7 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument([FromQuery] string filename)
         {
-            string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world{filename}");
+            string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world/{filename}");
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
