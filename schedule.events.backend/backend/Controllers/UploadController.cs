@@ -44,7 +44,7 @@ namespace backend.Controllers
                 var file = Request.Form.Files[0];
                 if (file.Length > 0)
                 {
-                    string fullPath = "world/";
+                    string fullPath = "world";
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
@@ -65,16 +65,11 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument([FromQuery] string filename)
         {
-            Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
             string filePath = $"world/{filename}";
-            Console.WriteLine($"INPUT: {filename}");
-
-            Console.WriteLine($"FILEPATTTTTTTTTH : {filePath}");
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
             return File(fileBytes, "application/force-download", filename);
-
         }
 
         [HttpGet("execute")]
