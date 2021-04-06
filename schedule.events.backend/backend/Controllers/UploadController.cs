@@ -58,7 +58,7 @@ namespace backend.Controllers
                 // save to server...
                 // ...
                 
-                var filePath = "world/";
+                var filePath = $"world/{file.FileName}";
 
                 using (var stream = System.IO.File.Create(filePath))
                 {
