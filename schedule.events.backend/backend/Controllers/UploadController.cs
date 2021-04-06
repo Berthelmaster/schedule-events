@@ -67,6 +67,7 @@ namespace backend.Controllers
         {
             Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
             string filePath = "/world";
+            Console.WriteLine($"INPUT: {filename}");
 
             Console.WriteLine($"FILEPATTTTTTTTTH : {filePath}");
 
