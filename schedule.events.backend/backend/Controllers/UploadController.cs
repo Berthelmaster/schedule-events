@@ -65,12 +65,10 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument([FromQuery] string filename)
         {
-            Debug.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAABB");
             Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
-            string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world");
+            string filePath = Path.Combine("/world");
 
-            Debug.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAABB");
-            Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
+            Console.WriteLine($"FILEPATTTTTTTTTH : {filePath}");
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
