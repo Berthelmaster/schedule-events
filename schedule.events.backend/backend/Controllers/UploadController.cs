@@ -37,10 +37,10 @@ namespace backend.Controllers
         }
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public ActionResult UploadFile(IFormFile file)
+        public ActionResult UploadFile([FromForm] IFormFile file)
         {
             Console.WriteLine("ABCDEEEEEEEE");
-            Console.WriteLine(file);
+            Console.WriteLine(file.Length);
             if (file == null || file.Length == 0)
                 return Content("file not selected");
 
