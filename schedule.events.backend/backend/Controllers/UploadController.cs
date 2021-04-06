@@ -74,7 +74,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("execute")]
-        public async Task<ActionResult<string>> Execute([FromQuery] string command)
+        public Task<ActionResult<string>> Execute([FromQuery] string command)
         {
             Process process = new Process
             {
@@ -88,7 +88,7 @@ namespace backend.Controllers
                 }
             };
             process.Start();
-            await process.StandardInput.WriteLineAsync(command);
+            process.StandardInput.WriteLine(command);
             var output = new List<string>();
 
             while (process.StandardOutput.Peek() > -1)
