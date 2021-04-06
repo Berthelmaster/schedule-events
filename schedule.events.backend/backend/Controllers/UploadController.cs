@@ -63,10 +63,9 @@ namespace backend.Controllers
         }
 
         [HttpGet("download")]
-        public ActionResult DownloadDocument()
+        public ActionResult DownloadDocument([FromQuery] string fileName)
         {
             string filePath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
-            string fileName = "SECaseBook8.pdf";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
@@ -93,14 +92,6 @@ namespace backend.Controllers
                 proc.WaitForExit();
             }
             return result;
-        }
-
-        private string GetStreamOutput(StreamReader stream)
-        {
-            //Read output in separate task to avoid deadlocks
-            var outputReadTask = Task.Run(() => stream.ReadToEnd());
-
-            return outputReadTask.Result;
         }
     }
 }
