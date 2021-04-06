@@ -89,9 +89,20 @@ namespace backend.Controllers
             };
             process.Start();
             await process.StandardInput.WriteLineAsync(command);
-            String outputResult = GetStreamOutput(process.StandardOutput);
+            var output = new List<string>();
 
-            return outputResult;
+            while (process.StandardOutput.Peek() > -1)
+            {
+                output.Add(process.StandardOutput.ReadLine());
+            }
+
+            while (process.StandardError.Peek() > -1)
+            {
+                output.Add(process.StandardError.ReadLine());
+            }
+            process.WaitForExit();
+
+            return output.ToString();
         }
 
         private string GetStreamOutput(StreamReader stream)
