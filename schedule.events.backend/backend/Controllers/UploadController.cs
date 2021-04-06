@@ -63,13 +63,13 @@ namespace backend.Controllers
         }
 
         [HttpGet("download")]
-        public ActionResult DownloadDocument([FromQuery] string fileName)
+        public ActionResult DownloadDocument([FromQuery] string filename)
         {
-            string filePath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
+            string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world{filename}");
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            return File(fileBytes, "application/force-download", fileName);
+            return File(fileBytes, "application/force-download", filename);
 
         }
 
