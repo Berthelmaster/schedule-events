@@ -37,23 +37,25 @@ namespace backend.Controllers
         }
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public ActionResult UploadFile([FromForm] IFormFile file)
+        public async Task<ActionResult> upload()
         {
-            Console.WriteLine("ABCDEEEEEEEE");
-            Console.WriteLine(file.Length);
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
-
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "world",
-                        file.FileName);
-
-            Console.WriteLine($"Writing to path: {path}");
-            Console.WriteLine(file);
-
-            using (var stream = new FileStream(path, FileMode.Create))
+            Console.WriteLine("STARTED!!");
+            // Request's .Form.Files property will
+            // contain QUploader's files.
+            var files = this.Request.Form.Files;
+            foreach (var file in files)
             {
-                file.CopyTo(stream);
+                if (file == null || file.Length == 0)
+                    continue;
+
+                // Do something with the file.
+                var fileName = file.FileName;
+                var fileSize = file.Length;
+
+                Console.WriteLine(fileName);
+                Console.WriteLine(fileSize);
+                // save to server...
+                // ...
             }
 
             return Ok();
