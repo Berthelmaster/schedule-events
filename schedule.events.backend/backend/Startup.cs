@@ -55,7 +55,7 @@ namespace backend
                 builder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                ); ;
+                );
 
             context.Database.Migrate();
 
