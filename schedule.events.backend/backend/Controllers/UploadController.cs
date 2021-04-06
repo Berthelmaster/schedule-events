@@ -57,14 +57,14 @@ namespace backend.Controllers
                 Console.WriteLine(fileSize);
                 // save to server...
                 // ...
-                /*
+                
                 var filePath = "world/";
 
                 using (var stream = System.IO.File.Create(filePath))
                 {
                     await file.CopyToAsync(stream);
                 }
-                */
+                
             }
 
             return Ok();
