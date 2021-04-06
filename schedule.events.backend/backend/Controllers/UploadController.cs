@@ -37,7 +37,7 @@ namespace backend.Controllers
         }
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public async Task<ActionResult> UploadFile(IFormFile file)
+        public ActionResult UploadFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return Content("file not selected");
@@ -46,9 +46,12 @@ namespace backend.Controllers
                         Directory.GetCurrentDirectory(), "world",
                         file.FileName);
 
+            Console.WriteLine($"Writing to path: {path}");
+            Console.WriteLine(file);
+
             using (var stream = new FileStream(path, FileMode.Create))
             {
-                await file.CopyToAsync(stream);
+                file.CopyTo(stream);
             }
 
             return Ok();
