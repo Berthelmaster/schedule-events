@@ -1,5 +1,6 @@
 ﻿using backend.Database;
 using backend.Models;
+using backend.Objects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,18 +21,23 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Post>>> GetSelectedPosts(List<Post> posts)
+        public async Task<ActionResult<List<Post>>> GetSelectedPosts(Geo geo)
         {
             List<Post> postList = new List<Post>();
 
-            foreach (var post in posts)
-            {
-                var temp = await _context.Posts.Where(x => x.City == post.City && x.Country == post.Country).AsNoTracking().FirstOrDefaultAsync();
+            if (geo.City == null && geo.Country == null) return new BadRequestResult();
 
-                if(temp != null)
-                {
-                    postList.Add(temp);
-                }
+            if(geo.City != null && geo.Country != null)
+            {
+                postList = await _context.Posts.Where(x => x.Country == geo.Country && x.City == geo.City).AsNoTracking().ToListAsync();
+            }
+            else if(geo.City == null)
+            {
+                postList = await _context.Posts.Where(x => x.Country == geo.Country).AsNoTracking().ToListAsync();
+            }
+            else
+            {
+                postList = await _context.Posts.Where(x => x.Country == geo.Country).AsNoTracking().ToListAsync();
             }
 
             if(postList.Count == 0)
@@ -43,13 +49,14 @@ namespace backend.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<ActionResult> CreatePost(Post post, int userid)
+        public async Task<ActionResult> CreatePost([FromBody] Post post, [FromQuery] int userid)
         {
             if (post == null) return new BadRequestResult();
 
             var createpost = new Post
             {
                 Title = post.Title,
+                Description = post.Description,
                 Content = post.Content,
                 Date = post.Date,
                 IsPublic = true,

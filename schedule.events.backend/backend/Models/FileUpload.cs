@@ -14,6 +14,7 @@ namespace backend.Models
         public string FileType { get; set; }
         public int Size { get; set; }
         public bool IsImage { get; set; }
+        public bool IsShared { get; set; } = false;
         public DateTime UploadDate { get; set; }
         public DateTime? Expires { get; set; } = null;
 

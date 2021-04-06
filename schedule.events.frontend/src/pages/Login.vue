@@ -47,11 +47,17 @@ export default {
       .then(res => {
         // If Successful
         localStorageService.setWithExpiry(LocalStaticNames.USER_INFORMATION, res, 14400) // 10 days expiration
-        
+
         this.$router.push('/')
       })
-      .catch(async rej => {
-        console.log(rej)
+      .catch(rej => {
+        console.log('error')
+      })
+    },
+    showNotif () {
+      this.notify({
+        message: 'Username or password is incorrect - Try again',
+        color: 'purple'
       })
     }
   },

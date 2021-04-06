@@ -47,3 +47,7 @@ D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netc
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.csprojAssemblyReference.cache
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\world\SECaseBook8.pdf
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\world\alexander.png
+D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\world\florent.png

@@ -7,6 +7,7 @@ const { default: axios } = require("axios")
 
 let trackApi = 'https://track.linkancestors.com'
 let backendApi = 'https://api.linkancestors.com'
+let localhost = 'https://localhost:44364'
 
 const ApiService = {
     logIp() {
@@ -94,9 +95,40 @@ const ApiService = {
                 .then(response => {
                     return resolve(response.data)
                 })
-                .catch(reject => {
-                    return reject(reject.data)
+                .catch(response => {
+                    return reject(response.data)
                 })
+        })
+    },
+    async createPost(postdetails){
+        console.log(postdetails)
+        return new Promise(async (resolve, reject) => {
+            await axios.post(`${backendApi}/post/add?userid=4`, postdetails)
+            .then(res => {
+                return resolve({
+                    result: res.data
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej.data
+                })
+            })
+        })
+    },
+    async getPosts(geo){
+        return new Promise(async (resolve, reject) => {
+            await axios.post(`${backendApi}/post`, geo)
+            .then(res => {
+                return resolve({
+                    result: res.data
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej.data
+                })
+            })
         })
     }
 }

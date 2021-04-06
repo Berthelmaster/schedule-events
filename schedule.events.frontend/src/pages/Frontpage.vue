@@ -37,8 +37,8 @@
       </div>
       <div class="content-events">
         <ul>
-          <li v-for="event in test_events" :key="event.id">
-            {{event.name}}
+          <li v-for="event in posts" :key="event.id">
+            {{event}}
           </li>
         </ul>
       </div>
@@ -309,7 +309,8 @@ export default {
         "Zimbabwe"
       ],
       selected_city: 'default',
-      cityList: Array()
+      cityList: Array(),
+      posts: []
     }
   },
   methods: {
@@ -331,6 +332,19 @@ export default {
     async onCityChanged(v){
       console.log(this.selected_country)
       console.log(this.selected_city)
+
+      await ApiService.getPosts({
+        Country: this.selected_country,
+        City: this.selected_city
+      })
+      .then(res => {
+        console.log('ok-?')
+        this.posts = res.result
+      })
+      .catch(rej => {
+        console.log("fuck-")
+        this.posts = null
+      })
     }
 
   },
