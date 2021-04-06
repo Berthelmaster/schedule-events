@@ -43,6 +43,7 @@ namespace backend.Controllers
             // Request's .Form.Files property will
             // contain QUploader's files.
             var files = this.Request.Form.Files;
+
             foreach (var file in files)
             {
                 if (file == null || file.Length == 0)
@@ -56,6 +57,12 @@ namespace backend.Controllers
                 Console.WriteLine(fileSize);
                 // save to server...
                 // ...
+                var filePath = "world/";
+
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    await file.CopyToAsync(stream);
+                }
             }
 
             return Ok();

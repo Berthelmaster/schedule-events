@@ -16,12 +16,11 @@
                 </div>
                 <div>
                   <q-uploader
-                    url="https://api.linkancestors.com/upload"
                     color="teal"
                     flat
                     style="width: inherit"
                     label="Upload event image"
-                    headers="[{name: 'Access-Control-Allow-Origin', value: '*'}]"
+                    :factory="uploadImage"
                   />
                 </div>
                 <div>
@@ -329,6 +328,18 @@ export default {
     },
     isLoggedIn(){
       return localStorageService.isLoggedIn()
+    },
+    uploadImage (file) {
+      return new Promise((resolve, reject) => {
+        // Retrieve JWT token from your store.
+        resolve({
+          url: 'https://api.linkancestors.com/upload',
+          method: 'POST',
+          headers: [
+            { name: 'Access-Control-Allow-Origin', value: '*' }
+          ]
+        })
+    })
     }
 
   },
