@@ -66,7 +66,7 @@ namespace backend.Controllers
         public ActionResult DownloadDocument([FromQuery] string filename)
         {
             Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
-            string filePath = $"/app/world/{filename}";
+            string filePath = $"world/{filename}";
             Console.WriteLine($"INPUT: {filename}");
 
             Console.WriteLine($"FILEPATTTTTTTTTH : {filePath}");
