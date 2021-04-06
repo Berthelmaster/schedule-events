@@ -89,7 +89,7 @@ namespace backend.Controllers
             };
             process.Start();
             await process.StandardInput.WriteLineAsync(command);
-            var output = await process.StandardOutput.ReadLineAsync();
+            var output = process.StandardOutput.ReadToEnd();
 
             return output;
         }
