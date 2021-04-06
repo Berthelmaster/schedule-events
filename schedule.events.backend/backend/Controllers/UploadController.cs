@@ -23,10 +23,11 @@ namespace backend.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWebHostEnvironment _appEnvironment;
 
-        public UploadController(AppDbContext context, IHttpContextAccessor httpContextAccessor)
+        public UploadController(AppDbContext context, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
+            _appEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
