@@ -64,7 +64,7 @@ namespace backend.Controllers
         public ActionResult DownloadDocument()
         {
             string filePath = "/app/world";
-            string fileName = "user.png";
+            string fileName = "abc.txt";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
