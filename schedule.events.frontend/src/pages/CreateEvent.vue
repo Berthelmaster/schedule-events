@@ -21,6 +21,7 @@
                     flat
                     style="width: inherit"
                     label="Upload event image"
+                    headers="[{name: Access-Control-Allow-Origin, value: *}]"
                   />
                 </div>
                 <div>
