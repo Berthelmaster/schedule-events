@@ -10,6 +10,7 @@ using backend.Database;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace backend.Controllers
 {
@@ -61,14 +62,25 @@ namespace backend.Controllers
         }
 
         [HttpGet("download")]
-        public ActionResult DownloadDocument()
+        public async Task<ActionResult> DownloadDocument()
         {
-            string filePath = "/app/world";
-            string fileName = "abc.txt";
+            Process process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "bash",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false
+                }
+            };
+            process.Start();
+            await process.StandardInput.WriteLineAsync("ls");
+            var output = await process.StandardOutput.ReadLineAsync();
+            Console.WriteLine(output);
 
-            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-
-            return File(fileBytes, "application/force-download", fileName);
+            return new OkObjectResult(output);
 
         }
     }
