@@ -42,7 +42,7 @@ namespace backend.Controllers
                 {
                     var worthyfilename = file.ContentDisposition;
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine("/app/world");
+                    var fullPath = Path.Combine("./world");
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
@@ -63,7 +63,7 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument()
         {
-            string filePath = "/app/world";
+            string filePath = "./world";
             string fileName = "user.png";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
