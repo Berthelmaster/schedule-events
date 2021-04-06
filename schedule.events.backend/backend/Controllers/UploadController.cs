@@ -65,6 +65,8 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument([FromQuery] string filename)
         {
+            Debug.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAABB");
+            Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
             string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world");
 
             Debug.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAABB");
