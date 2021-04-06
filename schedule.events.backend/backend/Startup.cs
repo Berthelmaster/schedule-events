@@ -52,7 +52,7 @@ namespace backend
             app.UseRouting();
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:8080", "https://linkancestors.com")
+                builder.WithOrigins("http://localhost:8080")
                        .AllowAnyHeader()
                        .AllowAnyMethod()
                        .AllowAnyOrigin()
