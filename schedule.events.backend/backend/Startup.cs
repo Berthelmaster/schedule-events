@@ -52,11 +52,11 @@ namespace backend
             app.UseRouting();
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:8080")
+                builder.WithOrigins("http://localhost:8080", "https://linkancestors.com")
                        .AllowAnyHeader()
                        .AllowAnyMethod()
                        .AllowAnyOrigin()
-                );
+                ); ;
 
             context.Database.Migrate();
 
