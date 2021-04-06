@@ -63,6 +63,7 @@ export default {
         {id: 2, name: "event name 2"}
       ],
       selected_country: 'default',
+      last_selected_country: '',
       countryList: [
         "Afghanistan",
         "Albania",
@@ -320,6 +321,12 @@ export default {
 
       // Fetch cities
       let cities = await ApiService.getcities(v)
+
+      if(this.last_selected_country != this.selected_country){
+        this.posts = null
+      }
+
+      this.last_selected_country = this.selected_country;
 
       // Map cities
       this.mapCities(cities.data.data)
