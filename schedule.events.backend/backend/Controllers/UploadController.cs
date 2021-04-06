@@ -74,35 +74,24 @@ namespace backend.Controllers
         }
 
         [HttpGet("execute")]
-        public Task<ActionResult<string>> Execute([FromQuery] string command)
+        public string Execute([FromQuery] string command)
         {
-            Process process = new Process
+            string result = "";
+            using (System.Diagnostics.Process proc = new System.Diagnostics.Process())
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "bash",
-                    RedirectStandardInput = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false
-                }
-            };
-            process.Start();
-            process.StandardInput.WriteLine(command);
-            var output = new List<string>();
+                proc.StartInfo.FileName = "/bin/bash";
+                proc.StartInfo.Arguments = "-c \" " + command + " \"";
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.RedirectStandardError = true;
+                proc.Start();
 
-            while (process.StandardOutput.Peek() > -1)
-            {
-                output.Add(process.StandardOutput.ReadLine());
+                result += proc.StandardOutput.ReadToEnd();
+                result += proc.StandardError.ReadToEnd();
+
+                proc.WaitForExit();
             }
-
-            while (process.StandardError.Peek() > -1)
-            {
-                output.Add(process.StandardError.ReadLine());
-            }
-            process.WaitForExit();
-
-            return output.ToString();
+            return result;
         }
 
         private string GetStreamOutput(StreamReader stream)
