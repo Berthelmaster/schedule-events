@@ -59,5 +59,17 @@ namespace backend.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
+        [HttpGet("download")]
+        public ActionResult DownloadDocument()
+        {
+            string filePath = "/world";
+            string fileName = "user.png";
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            return File(fileBytes, "application/force-download", fileName);
+
+        }
     }
 }
