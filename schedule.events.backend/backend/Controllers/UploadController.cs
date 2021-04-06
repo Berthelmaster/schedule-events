@@ -67,6 +67,8 @@ namespace backend.Controllers
         {
             string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world/{filename}");
 
+            Debug.WriteLine("------ FILEPATH ------ : " + filePath);
+
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
             return File(fileBytes, "application/force-download", filename);
