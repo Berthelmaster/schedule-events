@@ -39,6 +39,8 @@ namespace backend.Controllers
         [HttpPost("upload")]
         public ActionResult UploadFile(IFormFile file)
         {
+            Console.WriteLine("ABCDEEEEEEEE");
+            Console.WriteLine(file);
             if (file == null || file.Length == 0)
                 return Content("file not selected");
 
