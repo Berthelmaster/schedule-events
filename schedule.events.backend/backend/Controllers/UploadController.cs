@@ -35,6 +35,7 @@ namespace backend.Controllers
         {
             return Task.FromResult("Ok!");
         }
+
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
         public async Task<ActionResult> upload()
@@ -43,6 +44,8 @@ namespace backend.Controllers
             // Request's .Form.Files property will
             // contain QUploader's files.
             var files = this.Request.Form.Files;
+
+            if (files.Count == 0) return BadRequest();
 
             foreach (var file in files)
             {
