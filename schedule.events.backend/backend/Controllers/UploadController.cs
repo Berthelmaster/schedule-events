@@ -37,29 +37,21 @@ namespace backend.Controllers
         }
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public ActionResult UploadFile()
+        public async Task<ActionResult> UploadFile(IFormFile file)
         {
-            try
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+
+            var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "world",
+                        file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
             {
-                var file = Request.Form.Files[0];
-                if (file.Length > 0)
-                {
-                    string fullPath = "app/world";
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    return new OkObjectResult(fullPath);
-                }
-                else
-                {
-                    return BadRequest();
-                }
+                await file.CopyToAsync(stream);
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex}");
-            }
+
+            return Ok();
         }
 
         [HttpGet("download")]
