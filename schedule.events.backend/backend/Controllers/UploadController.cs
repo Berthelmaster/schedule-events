@@ -67,7 +67,8 @@ namespace backend.Controllers
         {
             string filePath = Path.Combine(_appEnvironment.ContentRootPath, $"/world");
 
-            Debug.WriteLine("------ FILEPATH ------ : " + filePath);
+            Debug.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAABB");
+            Console.WriteLine("ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAA");
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
