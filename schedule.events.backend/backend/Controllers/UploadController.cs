@@ -44,7 +44,7 @@ namespace backend.Controllers
                 var file = Request.Form.Files[0];
                 if (file.Length > 0)
                 {
-                    string fullPath = Path.Combine(_appEnvironment.ContentRootPath, "/world");
+                    string fullPath = "world/";
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
