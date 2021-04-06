@@ -11,6 +11,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
 
 namespace backend.Controllers
 {
@@ -20,6 +21,7 @@ namespace backend.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IWebHostEnvironment _appEnvironment;
 
         public UploadController(AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
@@ -64,7 +66,7 @@ namespace backend.Controllers
         [HttpGet("download")]
         public ActionResult DownloadDocument()
         {
-            string filePath = "/world";
+            string filePath = Path.Combine(_appEnvironment.ContentRootPath, "world/");
             string fileName = "SECaseBook8.pdf";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
