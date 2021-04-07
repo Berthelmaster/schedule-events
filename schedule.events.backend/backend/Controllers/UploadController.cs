@@ -39,7 +39,7 @@ namespace backend.Controllers
 
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public async Task<ActionResult> upload()
+        public async Task<ActionResult> Upload()
         {
             Console.WriteLine("STARTED!!");
             // Request's .Form.Files property will
@@ -47,6 +47,11 @@ namespace backend.Controllers
             var files = this.Request.Form.Files;
 
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+
+            foreach (var item in Request.Headers)
+            {
+                Console.WriteLine(item);
+            }
 
             Console.WriteLine(token);
 
