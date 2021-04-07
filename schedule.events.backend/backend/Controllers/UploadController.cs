@@ -45,6 +45,10 @@ namespace backend.Controllers
             // contain QUploader's files.
             var files = this.Request.Form.Files;
 
+            var token = _httpContextAccessor.HttpContext.Request.Headers["authorization"];
+
+            Console.WriteLine(token);
+
             if (files.Count == 0) return BadRequest();
 
             foreach (var file in files)
