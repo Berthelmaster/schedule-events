@@ -1,4 +1,5 @@
 const { default: axios } = require("axios")
+import localStorageService from '../storage/local.storage.service'
 
 /*let trackApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44387/' : 'https://track.linkancestors.com'
 /*let backendApi = process.env.NODE_ENV === 'development' ? 'https://localhost:44364/' : 'https://api.linkancestors.com'
@@ -8,6 +9,8 @@ const { default: axios } = require("axios")
 let trackApi = 'https://track.linkancestors.com'
 let backendApi = 'https://api.linkancestors.com'
 let localhost = 'https://localhost:44364'
+
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
 
 const ApiService = {
     logIp() {
