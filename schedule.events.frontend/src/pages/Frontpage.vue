@@ -37,7 +37,7 @@
       </div>
       <div class="content-events card-above-create-event" v-for="event in posts" :key="event.id">
     <q-card class="my-card">
-      <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+      <q-img :src="event.image" />
 
       <q-card-section>
         <q-btn
