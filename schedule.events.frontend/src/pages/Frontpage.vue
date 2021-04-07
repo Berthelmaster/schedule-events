@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="content-events">
+      <div class="content-events card-above-create-event">
     <q-card class="my-card" v-for="event in posts" :key="event.id">
       <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
 
@@ -81,8 +81,8 @@
       </q-card-actions>
     </q-card>
       </div>
-      <div>
-        <q-btn class="btn-full-width absolute-bottom" @click="$router.push('/create-event')" color="blue" outlined label="Create event" />
+      <div class="relative-position absolute-bottom">
+        <q-btn class="btn-full-width" @click="$router.push('/create-event')" color="blue" outlined label="Create event" />
       </div>
     </div>
   </q-page>
@@ -412,5 +412,8 @@ export default {
   max-width: 45rem;
   margin: auto;
   margin-top: 2rem;
-  }
+}
+.card-above-create-event{
+  margin-bottom: 5rem;
+}
 </style>
