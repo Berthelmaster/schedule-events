@@ -336,7 +336,8 @@ export default {
           url: 'https://api.linkancestors.com/upload',
           method: 'POST',
           headers: [
-            { name: 'Access-Control-Allow-Origin', value: '*' }
+            { name: 'Access-Control-Allow-Origin', value: '*' },
+            { name: 'Authorization', value: `Bearer ${localStorageService.getToken()}` }
           ]
         })
     })
