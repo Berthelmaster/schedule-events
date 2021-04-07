@@ -75,7 +75,7 @@ namespace backend.Controllers
                 return new BadRequestResult();
             }
 
-            var token = await _tokenHandler.GenerateToken(user.Role, user.Email);
+            var token = await _tokenHandler.GenerateToken(user.Role, user.Email, user.Id.ToString());
 
             var userdto = new UserDTO(user, token);
 

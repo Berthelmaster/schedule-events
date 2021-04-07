@@ -18,7 +18,7 @@ namespace backend.Security
 		{
 			_configuration = configuration;
 		}
-		public async Task<string> GenerateToken(string role, string email)
+		public async Task<string> GenerateToken(string role, string email, string userid)
 		{
 			var mySecret = _configuration["Tokens:TokenPrivateKey"];
 			var myIssuer = _configuration["Tokens:TokenIssuer"];
@@ -30,7 +30,8 @@ namespace backend.Security
 			var claims = new Dictionary<string, object>
 			{
 				{ ClaimTypes.Role, role },
-				{ ClaimTypes.Name, email }
+				{ ClaimTypes.Name, email },
+				{ ClaimTypes.Actor, userid }
 			};
 
 			var tokenDescriptor = new SecurityTokenDescriptor

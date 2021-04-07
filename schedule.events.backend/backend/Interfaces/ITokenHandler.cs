@@ -7,6 +7,6 @@ namespace backend.Interfaces
 {
     public interface ITokenHandler
     {
-        Task<string> GenerateToken(string role, string email);
+        Task<string> GenerateToken(string role, string email, string userid);
     }
 }
