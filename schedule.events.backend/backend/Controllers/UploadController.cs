@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Net.Http.Headers;
 
 namespace backend.Controllers
 {
@@ -45,7 +46,7 @@ namespace backend.Controllers
             // contain QUploader's files.
             var files = this.Request.Form.Files;
 
-            var token = _httpContextAccessor.HttpContext.Request.Headers["authorization"];
+            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
 
             Console.WriteLine(token);
 
