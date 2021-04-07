@@ -373,7 +373,8 @@ export default {
     }
 
     .activeDesktop{
-        max-width: 700px !important;
-        width: 700px !important;
+        max-width: 45rem !important;
+        width: 45rem !important;
+        margin: auto !important;
     }
 </style>
