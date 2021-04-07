@@ -2,7 +2,7 @@
   <q-page class="flex-center q-pa-sm bg-grey-3">
     <div class="column absolute-center relative-position mobile-width">
       <div class="row">
-        <h5 class="text-h5 text-white q-my-md">Login</h5>
+        <h5 class="text-h5 text-white q-my-md"><b>Login</b></h5>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
