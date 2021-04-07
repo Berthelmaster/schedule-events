@@ -35,8 +35,8 @@
           </div>
         </div>
       </div>
-      <div class="content-events card-above-create-event">
-    <q-card class="my-card" v-for="event in posts" :key="event.id">
+      <div class="content-events card-above-create-event" v-for="event in posts" :key="event.id">
+    <q-card class="my-card">
       <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
 
       <q-card-section>
@@ -414,6 +414,6 @@ export default {
   margin-top: 2rem;
 }
 .card-above-create-event{
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 </style>
