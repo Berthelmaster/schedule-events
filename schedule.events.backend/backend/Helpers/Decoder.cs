@@ -14,7 +14,7 @@ namespace backend.Helpers
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(stream);
             var tokenS = jsonToken as JwtSecurityToken;
-            var _claim = tokenS.Claims.First(claim => claim.Type == requestedClaim).Value;
+            var _claim = tokenS.Claims.First(claim => claim.Type == requestedClaim)?.Value;
 
             return _claim;
         }
