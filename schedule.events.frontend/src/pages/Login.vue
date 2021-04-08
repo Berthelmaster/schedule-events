@@ -48,6 +48,8 @@ export default {
         // If Successful
         localStorageService.setWithExpiry(LocalStaticNames.USER_INFORMATION, res, 14400) // 10 days expiration
 
+        this.axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
+
         this.$router.push('/')
       })
       .catch(rej => {
