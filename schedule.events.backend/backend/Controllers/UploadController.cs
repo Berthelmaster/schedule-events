@@ -47,9 +47,9 @@ namespace backend.Controllers
             // contain QUploader's files.
             var files = this.Request.Form.Files;
 
-            //var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            //var claim = Decoder.DecodeJwt(token, "Actor");
-            //Console.WriteLine(claim);
+            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+            var claim = Decoder.DecodeJwt(token, "actort");
+            Console.WriteLine(claim);
 
             Console.WriteLine(2);
 
