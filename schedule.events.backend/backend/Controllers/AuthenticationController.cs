@@ -31,7 +31,7 @@ namespace backend.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register(Register register)
         {
-            var user = await _context.Users.Where(x => x.Email == register.Email).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Email == register.Email).AsNoTracking().FirstOrDefaultAsync();
 
             if(user != null)
             {
@@ -58,7 +58,7 @@ namespace backend.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(Login login)
         {
-            var user = await _context.Users.Where(x => x.Email == login.Email).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Email == login.Email).AsNoTracking().FirstOrDefaultAsync();
 
             if(user == null)
             {
