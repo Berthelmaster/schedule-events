@@ -47,11 +47,15 @@ namespace backend.Controllers
             // contain QUploader's files.
             var files = this.Request.Form.Files;
 
-            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            var claim = Decoder.DecodeJwt(token, "Actor");
-            Console.WriteLine(claim);
+            //var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+            //var claim = Decoder.DecodeJwt(token, "Actor");
+            //Console.WriteLine(claim);
+
+            Console.WriteLine(2);
 
             if (files.Count == 0) return BadRequest();
+
+            Console.WriteLine(3);
 
             foreach (var file in files)
             {
@@ -75,7 +79,7 @@ namespace backend.Controllers
                 }
                 
             }
-
+            Console.WriteLine(4);
             return Ok();
         }
 
