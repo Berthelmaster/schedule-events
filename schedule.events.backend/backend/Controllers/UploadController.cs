@@ -64,7 +64,7 @@ namespace backend.Controllers
                 // Do something with the file.
                 var fileName = file.FileName;
                 var fileSize = file.Length;
-                var fullFileName = file.FileName + guid;
+                var fullFileName = guid + file.FileName;
 
                 Console.WriteLine(fileName);
                 Console.WriteLine(fileSize);
