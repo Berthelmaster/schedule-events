@@ -19,11 +19,12 @@
                     color="teal"
                     flat
                     style="width: inherit"
-                    label="Upload event image"
+                    label="Upload event image - Max size 200kb"
                     :factory="uploadImage"
                     @uploaded="onAccepted"
                     accept=".jpg, .png"
                     max-files="1"
+                    max-total-size="201332"
                   />
                 </div>
                 <div>
