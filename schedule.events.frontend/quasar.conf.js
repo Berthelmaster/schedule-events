@@ -109,7 +109,7 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `frontendApp`,
+        name: `Schedule Events`,
         short_name: `frontendApp`,
         description: `An App`,
         display: 'standalone',
