@@ -53,7 +53,7 @@ namespace backend.Controllers
 
             if (claim == null) return BadRequest();
 
-            if (files.Count == 0) return BadRequest();
+            if (files.Count == 0 || files.Count >= 2) return BadRequest();
 
             foreach (var file in files)
             {
