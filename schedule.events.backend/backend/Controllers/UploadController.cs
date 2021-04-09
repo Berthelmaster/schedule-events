@@ -70,7 +70,7 @@ namespace backend.Controllers
 
                 Console.WriteLine(fileExtension);
 
-                if (fileExtension != ".jpg" || fileExtension != ".png") return BadRequest();
+                if (fileExtension != ".jpg" && fileExtension != ".png") return BadRequest();
                 if (fileSize > maxFileSize) return BadRequest();
 
                 Console.WriteLine(fileSize);
