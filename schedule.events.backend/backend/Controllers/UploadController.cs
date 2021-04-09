@@ -60,7 +60,7 @@ namespace backend.Controllers
                     continue;
 
                 // Do something with the file.
-                var fileName = Guid.NewGuid().ToString();
+                var fileName = Guid.NewGuid().ToString() + file.FileName;
                 var fileSize = file.Length;
                 // save to server...
                 // ...
