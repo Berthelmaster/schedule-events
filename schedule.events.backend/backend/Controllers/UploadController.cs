@@ -66,7 +66,7 @@ namespace backend.Controllers
                 // save to server...
                 // ...
 
-                var fileExtension = System.IO.Path.GetExtension(file.FileName);
+                var fileExtension = System.IO.Path.GetExtension(file.FileName).ToLower();
 
                 Console.WriteLine(fileExtension);
 
