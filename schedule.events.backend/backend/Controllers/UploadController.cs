@@ -59,12 +59,10 @@ namespace backend.Controllers
                 if (file == null || file.Length == 0)
                     continue;
 
-                var guid = Guid.NewGuid().ToString();
-
                 // Do something with the file.
                 var fileName = file.FileName;
                 var fileSize = file.Length;
-                var fullFileName = guid + file.FileName;
+                var fullFileName = file.FileName;
 
                 Console.WriteLine(fileName);
                 Console.WriteLine(fileSize);
