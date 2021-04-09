@@ -93,9 +93,11 @@ namespace backend.Controllers
         {
             string filePath = $"world/{websitePath}";
 
+            string file = websitePath.Split('/').Last();
+
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            return File(fileBytes, "application/force-download", filePath);
+            return File(fileBytes, "application/force-download", file);
         }
 
         [HttpGet("execute")]
