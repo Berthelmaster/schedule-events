@@ -40,7 +40,7 @@
       
       <q-img v-if="event.image != ''" :src="event.image" />
       <q-img v-else src="https://api.linkancestors.com/download?websitePath=4/27e888de-dd14-4c41-9196-1ab340338101no-image.png" style="max-height: 405px; object-fit: contain;" />
-
+      <h2>hello</h2>
       <q-card-section>
         <q-btn
           fab
