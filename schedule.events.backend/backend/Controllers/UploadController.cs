@@ -49,13 +49,8 @@ namespace backend.Controllers
 
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
             var claim = Decoder.DecodeJwt(token, Decoder.RequestedClaims.actort);
-            Console.WriteLine(claim);
-
-            Console.WriteLine(2);
 
             if (files.Count == 0) return BadRequest();
-
-            Console.WriteLine(3);
 
             foreach (var file in files)
             {
@@ -71,7 +66,12 @@ namespace backend.Controllers
                 // save to server...
                 // ...
                 
-                var filePath = $"world/{file.FileName}";
+                var filePath = $"world/{claim}/{file.FileName}";
+
+                if (!Directory.Exists($"world/{claim}/")){
+                    Directory.CreateDirectory($"world/{claim}/");
+                }
+
 
                 using (var stream = System.IO.File.Create(filePath))
                 {
