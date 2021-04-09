@@ -46,6 +46,7 @@ namespace backend.Controllers
             // Request's .Form.Files property will
             // contain QUploader's files.
             var files = this.Request.Form.Files;
+            var maxFileSize = 50333 * 4;
 
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
             var claim = Decoder.DecodeJwt(token, Decoder.RequestedClaims.actort);
@@ -64,6 +65,13 @@ namespace backend.Controllers
                 var fileSize = file.Length;
                 // save to server...
                 // ...
+
+                var fileExtension = System.IO.Path.GetExtension(file.FileName);
+
+                Console.WriteLine(fileExtension);
+
+                if (fileExtension != ".jpg" || fileExtension != ".png") return BadRequest();
+                if (fileSize > maxFileSize) return BadRequest();
 
                 Console.WriteLine(fileSize);
                 

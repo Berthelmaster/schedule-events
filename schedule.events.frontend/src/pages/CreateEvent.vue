@@ -21,6 +21,7 @@
                     style="width: inherit"
                     label="Upload event image"
                     :factory="uploadImage"
+                    @uploaded="onAccepted"
                   />
                 </div>
                 <div>
@@ -342,6 +343,9 @@ export default {
         })
     })
     },
+    onAccepted (server){
+      this.file = server.xhr.response
+    },
     async createPost(){
       console.log('HIT!')
       await ApiService.createPost({
@@ -351,7 +355,7 @@ export default {
         Date: "2017/20/20",
         Country: this.selected_country,
         City: this.selected_city,
-        Image: "test"
+        Image: this.file
       })
       .then(res => {
         console.log('ok?')
