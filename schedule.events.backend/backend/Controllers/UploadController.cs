@@ -50,6 +50,8 @@ namespace backend.Controllers
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
             var claim = Decoder.DecodeJwt(token, Decoder.RequestedClaims.actort);
 
+            if (claim == null) return BadRequest();
+
             if (files.Count == 0) return BadRequest();
 
             foreach (var file in files)
