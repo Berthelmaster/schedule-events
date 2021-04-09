@@ -95,7 +95,7 @@ namespace backend.Controllers
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            return File(fileBytes, "application/force-download", websitePath);
+            return File(fileBytes, "application/force-download", filePath);
         }
 
         [HttpGet("execute")]
