@@ -95,6 +95,9 @@ namespace backend.Controllers
 
             string file = websitePath.Split('/').Last();
 
+            Console.WriteLine(filePath);
+            Console.WriteLine(file);
+
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
             return File(fileBytes, "application/force-download", file);
