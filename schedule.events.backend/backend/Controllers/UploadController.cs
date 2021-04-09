@@ -40,7 +40,7 @@ namespace backend.Controllers
 
         // -v /home/pi/websites/images:/home/pi/websites/images
         [HttpPost("upload")]
-        public async Task<ActionResult> Upload()
+        public async Task<ActionResult<string>> Upload()
         {
             Console.WriteLine("STARTED!!");
             // Request's .Form.Files property will
@@ -57,16 +57,19 @@ namespace backend.Controllers
                 if (file == null || file.Length == 0)
                     continue;
 
+                var guid = Guid.NewGuid().ToString();
+
                 // Do something with the file.
                 var fileName = file.FileName;
                 var fileSize = file.Length;
+                var fullFileName = file.FileName + guid;
 
                 Console.WriteLine(fileName);
                 Console.WriteLine(fileSize);
                 // save to server...
                 // ...
                 
-                var filePath = $"world/{claim}/{file.FileName}";
+                var filePath = $"world/{claim}/{fullFileName}";
 
                 if (!Directory.Exists($"world/{claim}/")){
                     Directory.CreateDirectory($"world/{claim}/");
@@ -77,20 +80,22 @@ namespace backend.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
-                
+
+                string fullWebsitePath = $"https://api.linkancestors.com/download?filename={claim}/{fullFileName}";
+
+                return new OkObjectResult(fullWebsitePath);
             }
-            Console.WriteLine(4);
-            return Ok();
+            return BadRequest();
         }
 
         [HttpGet("download")]
-        public ActionResult DownloadDocument([FromQuery] string filename)
+        public ActionResult DownloadDocument([FromQuery] string websitePath)
         {
-            string filePath = $"world/{filename}";
+            string filePath = $"world/{websitePath}";
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            return File(fileBytes, "application/force-download", filename);
+            return File(fileBytes, "application/force-download", websitePath);
         }
 
         [HttpGet("execute")]
