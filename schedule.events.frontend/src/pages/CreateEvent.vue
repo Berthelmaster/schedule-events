@@ -22,6 +22,8 @@
                     label="Upload event image"
                     :factory="uploadImage"
                     @uploaded="onAccepted"
+                    accept=".jpg, .png"
+                    max-files="1"
                   />
                 </div>
                 <div>
