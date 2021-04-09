@@ -60,16 +60,14 @@ namespace backend.Controllers
                     continue;
 
                 // Do something with the file.
-                var fileName = file.FileName;
+                var fileName = Guid.NewGuid().ToString();
                 var fileSize = file.Length;
-                var fullFileName = file.FileName;
-
-                Console.WriteLine(fileName);
-                Console.WriteLine(fileSize);
                 // save to server...
                 // ...
+
+                Console.WriteLine(fileSize);
                 
-                var filePath = $"world/{claim}/{fullFileName}";
+                var filePath = $"world/{claim}/{fileName}";
 
                 if (!Directory.Exists($"world/{claim}/")){
                     Directory.CreateDirectory($"world/{claim}/");
@@ -81,7 +79,7 @@ namespace backend.Controllers
                     await file.CopyToAsync(stream);
                 }
 
-                string fullWebsitePath = $"https://api.linkancestors.com/download?filename={claim}/{fullFileName}";
+                string fullWebsitePath = $"https://api.linkancestors.com/download?websitePath={claim}/{fileName}";
 
                 return new OkObjectResult(fullWebsitePath);
             }
