@@ -48,7 +48,7 @@ namespace backend.Controllers
             var files = this.Request.Form.Files;
 
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            var claim = Decoder.DecodeJwt(token, "actort");
+            var claim = Decoder.DecodeJwt(token, Decoder.RequestedClaims.actort);
             Console.WriteLine(claim);
 
             Console.WriteLine(2);
