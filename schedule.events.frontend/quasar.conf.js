@@ -110,8 +110,8 @@ module.exports = function (/* ctx */) {
       workboxOptions: {}, // only for GenerateSW
       manifest: {
         name: `Schedule Events`,
-        short_name: `frontendApp`,
-        description: `An App`,
+        short_name: `Schedule Events`,
+        description: `An Event App to arrange events with friends and communities`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
