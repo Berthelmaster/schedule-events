@@ -39,7 +39,11 @@ export default {
     }
   },
   methods: {
+
     async Login(){
+
+      this.$q.loading.show()
+
       await ApiService.login({
         email: this.email,
         password: this.password
@@ -50,15 +54,20 @@ export default {
 
         this.axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
 
+        this.$q.loading.hide()
+
         this.$router.push('/')
       })
       .catch(rej => {
+        this.$q.loading.hide()
+        this.showNotif()
         console.log('error')
       })
     },
     showNotif () {
-      this.notify({
-        message: 'Username or password is incorrect - Try again',
+      this.$q.notify({
+        message: 'Error attemping login - Email or password is incorrect',
+        caption: 'Server Error',
         color: 'purple'
       })
     }
