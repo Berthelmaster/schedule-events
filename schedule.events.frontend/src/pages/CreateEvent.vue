@@ -48,7 +48,7 @@
 <script>
 import ApiService from '../services/api.service';
 import localStorageService from '../storage/local.storage.service'
-import { Platform } from 'quasar'
+import { Platform, QSpinnerGears } from 'quasar'
 
 export default {
   name: 'PageIndex',
@@ -360,12 +360,34 @@ export default {
         City: this.selected_city,
         Image: this.file
       })
-      .then(res => {
+      .then(async res => {
         console.log('ok?')
+        await this.showLoading('Event created successfully!', 'green')
+        this.$router.push('/')
       })
-      .catch(rej => {
+      .catch(async rej => {
         console.log("fuck")
+        await this.showLoading('Server error - Try again', 'red')
       })
+    },
+      showLoading (msg, color) {
+      this.$q.loading.show({
+        message: 'Creating event...'
+      })
+
+      this.timer = setTimeout(async () => {
+        this.$q.loading.show({
+          spinner: QSpinnerGears,
+          spinnerColor: color,
+          message: msg
+        })
+
+        this.timer = setTimeout(async () => {
+          this.$q.loading.hide()
+          this.timer = void 0
+        }, 3000)
+      }, 2000)
+      return new Promise(resolve => setTimeout(resolve, 5000));
     }
 
   },
