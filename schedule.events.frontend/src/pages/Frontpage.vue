@@ -67,8 +67,7 @@
         <div class="text-subtitle1">
           $・{{event.description}}
         </div>
-        <div class="text-caption text-grey">
-          {{event.content}}
+        <div class="text-caption text-grey" v-html="event.content">
         </div>
       </q-card-section>
 
