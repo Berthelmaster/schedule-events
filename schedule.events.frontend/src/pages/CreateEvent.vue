@@ -22,10 +22,12 @@
                     label="Upload event image - Max size 200kb"
                     :factory="uploadImage"
                     @uploaded="onAccepted"
+                    @rejected="onRejected"
                     accept=".jpg, .png"
                     max-files="1"
                     max-total-size="201332"
                     auto-upload
+                    
                   />
                 </div>
                 <div>
@@ -49,7 +51,7 @@
 <script>
 import ApiService from '../services/api.service';
 import localStorageService from '../storage/local.storage.service'
-import { Platform, QSpinnerGears } from 'quasar'
+import { colors, Platform, QSpinnerGears } from 'quasar'
 
 export default {
   name: 'PageIndex',
@@ -371,7 +373,6 @@ export default {
         this.$router.push('/')
       })
       .catch(async rej => {
-        console.log("fuck")
         await this.showLoading('Server error - Try again', 'red')
       })
     },
@@ -390,6 +391,16 @@ export default {
         }, 3000)
       }, 2000)
       return new Promise(resolve => setTimeout(resolve, 5000));
+    },
+    onRejected(file){
+      this.$q.notify({
+        position: "bottom",
+        timeout: 4000,
+        multiLine: true,
+        message: `The file does not meet requirements \n Reason: File is too large. ${(file[0].file.size) / 1000}kb exceeds 200kb`,
+        textColor: "white",
+        color: "red"
+      })
     }
 
   },
