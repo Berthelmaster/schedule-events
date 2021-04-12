@@ -25,6 +25,7 @@
                     accept=".jpg, .png"
                     max-files="1"
                     max-total-size="201332"
+                    auto-upload
                   />
                 </div>
                 <div>
