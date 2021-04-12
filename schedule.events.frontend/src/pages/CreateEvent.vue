@@ -366,6 +366,7 @@ export default {
       .then(async res => {
         console.log('ok?')
         await this.showLoading('Event created successfully!', 'green')
+        this.$destroy()
         this.$router.push('/')
       })
       .catch(async rej => {
