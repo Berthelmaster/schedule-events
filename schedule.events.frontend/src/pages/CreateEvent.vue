@@ -351,6 +351,9 @@ export default {
     },
     async createPost(){
       console.log('HIT!')
+      this.$q.loading.show({
+        message: 'Creating event...'
+      })
       await ApiService.createPost({
         Title: this.Event_Name,
         Description: this.Description,
@@ -371,9 +374,6 @@ export default {
       })
     },
       showLoading (msg, color) {
-      this.$q.loading.show({
-        message: 'Creating event...'
-      })
 
       this.timer = setTimeout(async () => {
         this.$q.loading.show({
