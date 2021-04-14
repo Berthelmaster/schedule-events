@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex-center q-pa-sm bg-grey-3">
-    <div class="">
-      <div>
+    <div>
+      <div class="relative-position">
         <div v-if="$q.platform.is.desktop" class="row">
           <div class="col">
             <h3 style="margin-top: 0px">Search</h3>
@@ -35,51 +35,59 @@
           </div>
         </div>
       </div>
+      <div v-if="posts.length > 0">
       <div class="content-events card-above-create-event" v-for="event in posts" :key="event.id">
-    <q-card class="my-card">
-      
-      <q-img v-if="event.image != ''" :src="event.image" />
-      <q-img v-else src="https://api.linkancestors.com/download?websitePath=4/27e888de-dd14-4c41-9196-1ab340338101no-image.png" style="max-height: 405px; object-fit: contain;" />
-      <q-card-section>
-        <q-btn
-          fab
-          color="primary"
-          icon="place"
-          class="absolute"
-          style="top: 0; right: 12px; transform: translateY(-50%);"
-        />
+        <q-card class="my-card">
+        
+        <q-img v-if="event.image != ''" :src="event.image" />
+        <q-img v-else src="https://api.linkancestors.com/download?websitePath=4/27e888de-dd14-4c41-9196-1ab340338101no-image.png" style="max-height: 405px; object-fit: contain;" />
+        <q-card-section>
+          <q-btn
+            fab
+            color="primary"
+            icon="place"
+            class="absolute"
+            style="top: 0; right: 12px; transform: translateY(-50%);"
+          />
 
-        <div class="row no-wrap items-center">
-          <div class="col text-h6 ellipsis">
-            {{event.title}}
+          <div class="row no-wrap items-center">
+            <div class="col text-h6 ellipsis">
+              {{event.title}}
+            </div>
+            <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
+              <q-icon name="place" />
+              {{event.city}} - 
+              {{event.country}}
+            </div>
           </div>
-          <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
-            <q-icon name="place" />
-            {{event.city}} - 
-            {{event.country}}
+
+          <q-rating v-model="stars" :max="5" size="32px" />
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <div class="text-subtitle1">
+            $・{{event.description}}
           </div>
+          <div class="text-caption text-grey" v-html="event.content">
+          </div>
+        </q-card-section>
+
+        <q-separator />
+
+        <q-card-actions>
+          <q-btn flat round icon="event" />
+          <q-btn flat color="primary">
+            Reserve
+          </q-btn>
+        </q-card-actions>
+      </q-card>
+      </div>
+      </div>
+      <div v-else class="center">
+        <div>
+          <div class="text-h1">No Content</div>
+          <div class="text-subtitle1">- Click search and select your area</div>
         </div>
-
-        <q-rating v-model="stars" :max="5" size="32px" />
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        <div class="text-subtitle1">
-          $・{{event.description}}
-        </div>
-        <div class="text-caption text-grey" v-html="event.content">
-        </div>
-      </q-card-section>
-
-      <q-separator />
-
-      <q-card-actions>
-        <q-btn flat round icon="event" />
-        <q-btn flat color="primary">
-          Reserve
-        </q-btn>
-      </q-card-actions>
-    </q-card>
       </div>
       <div class="relative-position absolute-bottom">
         <q-btn class="btn-full-width" @click="$router.push('/create-event')" color="blue" outlined label="Create event" />
@@ -90,7 +98,7 @@
 
 <script>
 import ApiService from '../services/api.service';
-import { Platform } from 'quasar'
+import { colors, Platform, QSpinnerGears } from 'quasar'
 
 export default {
   name: 'PageIndex',
@@ -356,6 +364,11 @@ export default {
   },
   methods: {
     async onCountryChanged(v){
+      // Show loading
+      this.$q.loading.show({
+        message: 'Creating event...'
+      })
+
       // Reset city list
       this.cityList = Array()
 
@@ -376,6 +389,7 @@ export default {
       this.cityList = cities
       this.selected_city = cities[0]
       this.onCityChanged(cities[0])
+      this.$q.loading.hide()
     },
     async onCityChanged(v){
       console.log(this.selected_country)
@@ -415,5 +429,15 @@ export default {
 }
 .card-above-create-event{
   margin-bottom: 3rem;
+}
+
+.center {
+  margin: auto;
+  width: 100%;
+  padding: 5px;
+  position: absolute;
+  top: 50%;  
+  text-align: center;
+  transform: translate(0, -50%)
 }
 </style>
