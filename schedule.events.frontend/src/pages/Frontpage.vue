@@ -419,7 +419,6 @@ export default {
 <style lang="scss">
 .btn-full-width{
   width: 100%;
-  padding-bottom: -5px;
 }
 .my-card{
   width: 100%;
@@ -436,7 +435,6 @@ export default {
   margin-top: 3rem;
   width: 100%;
   padding: 5px;
-  position: absolute;
   top: 50%;  
   text-align: center;
   transform: translate(0, -50%)
