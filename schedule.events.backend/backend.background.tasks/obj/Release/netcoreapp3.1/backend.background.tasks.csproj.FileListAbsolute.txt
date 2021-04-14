@@ -1,0 +1,8 @@
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\bin\Release\netcoreapp3.1\backend.background.tasks.deps.json
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\bin\Release\netcoreapp3.1\backend.background.tasks.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\bin\Release\netcoreapp3.1\backend.background.tasks.pdb
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\obj\Release\netcoreapp3.1\backend.background.tasks.AssemblyInfoInputs.cache
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\obj\Release\netcoreapp3.1\backend.background.tasks.AssemblyInfo.cs
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\obj\Release\netcoreapp3.1\backend.background.tasks.csproj.CoreCompileInputs.cache
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\obj\Release\netcoreapp3.1\backend.background.tasks.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend.background.tasks\obj\Release\netcoreapp3.1\backend.background.tasks.pdb

@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.background.tasks.Extensions;
 
 namespace backend
 {
@@ -35,6 +36,8 @@ namespace backend
             services.AddObjectLifetime();
 
             services.AddDatabase(Configuration);
+
+            services.AddBackgroundServices();
         }
         // Test
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +68,8 @@ namespace backend
             {
                 endpoints.MapControllers();
             });
+
+            app.AddBackgroundServicesDashboard();
         }
     }
 }
