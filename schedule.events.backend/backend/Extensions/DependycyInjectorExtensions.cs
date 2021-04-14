@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace backend.Extensions
 {
-    public static class DependycyInjector
+    public static class DependycyInjectorExtensions
     {
         public static void AddObjectLifetime(this IServiceCollection services)
         {
