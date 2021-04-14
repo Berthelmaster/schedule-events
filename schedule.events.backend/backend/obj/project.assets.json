@@ -1720,7 +1720,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "backend.background.tasks/1.0.0": {
+      "ClassLibrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1729,10 +1729,10 @@
           "Hangfire.MemoryStorage": "1.7.0"
         },
         "compile": {
-          "bin/placeholder/backend.background.tasks.dll": {}
+          "bin/placeholder/ClassLibrary1.dll": {}
         },
         "runtime": {
-          "bin/placeholder/backend.background.tasks.dll": {}
+          "bin/placeholder/ClassLibrary1.dll": {}
         }
       }
     }
@@ -5919,14 +5919,15 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "backend.background.tasks/1.0.0": {
+    "ClassLibrary1/1.0.0": {
       "type": "project",
-      "path": "../backend.background.tasks/backend.background.tasks.csproj",
-      "msbuildProject": "../backend.background.tasks/backend.background.tasks.csproj"
+      "path": "../ClassLibrary1/ClassLibrary1.csproj",
+      "msbuildProject": "../ClassLibrary1/ClassLibrary1.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ClassLibrary1 >= 1.0.0",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 3.1.13",
       "Microsoft.EntityFrameworkCore.Abstractions >= 3.1.13",
@@ -5936,8 +5937,7 @@
       "Microsoft.IdentityModel.Tokens >= 6.10.0",
       "Pomelo.EntityFrameworkCore.MySql >= 3.2.4",
       "Pomelo.EntityFrameworkCore.MySql.Design >= 1.1.2",
-      "System.IdentityModel.Tokens.Jwt >= 6.10.0",
-      "backend.background.tasks >= 1.0.0"
+      "System.IdentityModel.Tokens.Jwt >= 6.10.0"
     ]
   },
   "packageFolders": {
@@ -5974,8 +5974,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Repositories\\schedule-events\\schedule.events.backend\\backend.background.tasks\\backend.background.tasks.csproj": {
-              "projectPath": "D:\\Repositories\\schedule-events\\schedule.events.backend\\backend.background.tasks\\backend.background.tasks.csproj"
+            "D:\\Repositories\\schedule-events\\schedule.events.backend\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "D:\\Repositories\\schedule-events\\schedule.events.backend\\ClassLibrary1\\ClassLibrary1.csproj"
             }
           }
         }
