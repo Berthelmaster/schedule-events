@@ -19,6 +19,8 @@ namespace backend.Extensions.Hangfire
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseDefaultTypeSerializer()
                 .UseMemoryStorage();
+
+                
             });
 
             services.AddHangfireServer();
@@ -26,7 +28,10 @@ namespace backend.Extensions.Hangfire
 
         public static void AddBackgroundServicesDashboard(this IApplicationBuilder app)
         {
-            app.UseHangfireDashboard();
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions { 
+                Authorization = new [] { new HangfireAuthorizationFilter()}
+            });
         }
     }
 }

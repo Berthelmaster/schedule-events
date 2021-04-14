@@ -65,3 +65,4 @@ D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netc
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\pt\Hangfire.Core.resources.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\zh-TW\Hangfire.Core.resources.dll
 D:\Repositories\schedule-events\schedule.events.backend\backend\bin\Release\netcoreapp3.1\zh\Hangfire.Core.resources.dll
+D:\Repositories\schedule-events\schedule.events.backend\backend\obj\Release\netcoreapp3.1\backend.csprojAssemblyReference.cache
