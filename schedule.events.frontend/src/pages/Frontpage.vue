@@ -357,7 +357,7 @@ export default {
         "Zimbabwe"
       ],
       selected_city: 'default',
-      cityList: Array(),
+      cityList: [],
       posts: [],
       stars: 4
     }
@@ -376,7 +376,7 @@ export default {
       let cities = await ApiService.getcities(v)
 
       if(this.last_selected_country != this.selected_country){
-        this.posts = null
+        this.posts = []
       }
 
       this.last_selected_country = this.selected_country;
@@ -392,6 +392,9 @@ export default {
       this.$q.loading.hide()
     },
     async onCityChanged(v){
+      this.$q.loading.show({
+        message: 'Creating event...'
+      })
       console.log(this.selected_country)
       console.log(this.selected_city)
 
@@ -402,10 +405,12 @@ export default {
       .then(res => {
         console.log('ok-?')
         this.posts = res.result
+        this.$q.loading.hide()
       })
       .catch(rej => {
         console.log("fuck-")
-        this.posts = null
+        this.posts = []
+        this.$q.loading.hide()
       })
     }
 
@@ -432,11 +437,13 @@ export default {
 
 .center {
   margin: auto;
-  margin-top: 3rem;
   width: 100%;
+  height: 100%;
   padding: 5px;
-  top: 50%;  
   text-align: center;
-  transform: translate(0, -50%)
+  line-height: 100px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
 }
 </style>
