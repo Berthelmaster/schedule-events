@@ -371,6 +371,10 @@ export default {
         message: 'Loading event...'
       })
 
+      this.RangeFrom = 0
+      this.RangeTo = 10
+      this.posts = []
+
       // Reset city list
       this.cityList = Array()
 
@@ -390,8 +394,8 @@ export default {
       if(this.cityList == null || this.cityList == undefined) return;
       this.cityList = cities
       this.selected_city = cities[0]
-      this.onCityChanged(cities[0])
       this.$q.loading.hide()
+      this.onCityChanged(cities[0])
     },
     async onCityChanged(v){
       this.$q.loading.show({
@@ -399,6 +403,10 @@ export default {
       })
       console.log(this.selected_country)
       console.log(this.selected_city)
+
+      this.RangeFrom = 0
+      this.RangeTo = 10
+      this.posts = []
 
       await ApiService.getPosts({
         Country: this.selected_country,
@@ -415,6 +423,24 @@ export default {
         console.log("fuck-")
         this.posts = []
         this.$q.loading.hide()
+      })
+    },
+    async getAdditionalPosts(){
+      this.RangeFrom += 10
+      this.RangeTo += 10
+
+      await ApiService.getPosts({
+        Country: this.selected_country,
+        City: this.selected_city,
+        RangeFrom: this.RangeFrom,
+        RangeTo: this.RangeTo 
+      })
+      .then(res => {
+        console.log('Push to list')
+        this.posts.push(res.result)
+      })
+      .catch(rej => {
+        console.log('error')
       })
     }
 
