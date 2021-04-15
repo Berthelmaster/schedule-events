@@ -29,15 +29,33 @@ namespace backend.Controllers
 
             if(geo.City != null && geo.Country != null)
             {
-                postList = await _context.Posts.Where(x => x.Country == geo.Country && x.City == geo.City).AsNoTracking().ToListAsync();
+                postList = await _context.Posts
+                    .Where(x => x.Country == geo.Country && x.City == geo.City)
+                    .OrderBy(x => x.Id)
+                    .Skip(geo.RangeFrom)
+                    .Take(geo.RangeTo)
+                    .AsNoTracking()
+                    .ToListAsync();
             }
             else if(geo.City == null)
             {
-                postList = await _context.Posts.Where(x => x.Country == geo.Country).AsNoTracking().ToListAsync();
+                postList = await _context.Posts
+                    .Where(x => x.Country == geo.Country && x.City == geo.City)
+                    .OrderBy(x => x.Id)
+                    .Skip(geo.RangeFrom)
+                    .Take(geo.RangeTo)
+                    .AsNoTracking()
+                    .ToListAsync();
             }
             else
             {
-                postList = await _context.Posts.Where(x => x.Country == geo.Country).Skip(geo.RangeFrom).Take(geo.RangeTo).AsNoTracking().ToListAsync();
+                postList = await _context.Posts
+                    .Where(x => x.Country == geo.Country && x.City == geo.City)
+                    .OrderBy(x => x.Id)
+                    .Skip(geo.RangeFrom)
+                    .Take(geo.RangeTo)
+                    .AsNoTracking()
+                    .ToListAsync();
             }
 
             if(postList.Count == 0)
