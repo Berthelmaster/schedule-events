@@ -366,7 +366,7 @@ export default {
     async onCountryChanged(v){
       // Show loading
       this.$q.loading.show({
-        message: 'Creating event...'
+        message: 'Loading event...'
       })
 
       // Reset city list
@@ -393,7 +393,7 @@ export default {
     },
     async onCityChanged(v){
       this.$q.loading.show({
-        message: 'Creating event...'
+        message: 'Loading...'
       })
       console.log(this.selected_country)
       console.log(this.selected_city)
