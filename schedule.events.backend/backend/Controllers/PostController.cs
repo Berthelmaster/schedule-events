@@ -37,7 +37,7 @@ namespace backend.Controllers
             }
             else
             {
-                postList = await _context.Posts.Where(x => x.Country == geo.Country).AsNoTracking().ToListAsync();
+                postList = await _context.Posts.Where(x => x.Country == geo.Country).Skip(geo.RangeFrom).Take(geo.RangeTo).AsNoTracking().ToListAsync();
             }
 
             if(postList.Count == 0)

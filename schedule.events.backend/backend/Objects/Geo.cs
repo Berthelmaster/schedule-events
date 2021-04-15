@@ -9,5 +9,7 @@ namespace backend.Objects
     {
         public string Country { get; set; }
         public string City { get; set; }
+        public int RangeFrom { get; set; }
+        public int RangeTo { get; set; }
     }
 }
