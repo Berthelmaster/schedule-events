@@ -359,7 +359,9 @@ export default {
       selected_city: 'default',
       cityList: [],
       posts: [],
-      stars: 4
+      stars: 4,
+      RangeFrom: 0,
+      RangeTo: 10
     }
   },
   methods: {
@@ -400,7 +402,9 @@ export default {
 
       await ApiService.getPosts({
         Country: this.selected_country,
-        City: this.selected_city
+        City: this.selected_city,
+        RangeFrom: this.RangeFrom,
+        RangeTo: this.RangeTo 
       })
       .then(res => {
         console.log('ok-?')
