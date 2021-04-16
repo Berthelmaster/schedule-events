@@ -124,7 +124,7 @@ const ApiService = {
             await axios.post(`${backendApi}/post`, geo)
             .then(res => {
                 return resolve({
-                    result: res.data
+                    result: res
                 })
             })
             .catch(rej => {

@@ -36,7 +36,8 @@
         </div>
       </div>
       <div v-if="posts.length > 0">
-      <div class="content-events card-above-create-event" v-for="event in posts" :key="event.id">
+      <q-infinite-scroll @load="getAdditionalPosts" :offset="800">
+      <div class="content-events card-above-create-event" v-for="(event, index) in posts" :key="index">
         <q-card class="my-card">
         
         <q-img v-if="event.image != ''" :src="event.image" />
@@ -82,6 +83,12 @@
         </q-card-actions>
       </q-card>
       </div>
+      <template v-slot:loading>
+        <div class="row justify-center q-my-md">
+          <q-spinner-dots color="primary" size="40px" />
+        </div>
+      </template>
+      </q-infinite-scroll>
       </div>
       <div v-else class="center">
         <div>
@@ -360,8 +367,7 @@ export default {
       cityList: [],
       posts: [],
       stars: 4,
-      RangeFrom: 0,
-      RangeTo: 10
+      RangeFrom: 0
     }
   },
   methods: {
@@ -372,7 +378,6 @@ export default {
       })
 
       this.RangeFrom = 0
-      this.RangeTo = 10
       this.posts = []
 
       // Reset city list
@@ -401,22 +406,19 @@ export default {
       this.$q.loading.show({
         message: 'Loading...'
       })
-      console.log(this.selected_country)
-      console.log(this.selected_city)
 
       this.RangeFrom = 0
-      this.RangeTo = 10
       this.posts = []
 
       await ApiService.getPosts({
         Country: this.selected_country,
         City: this.selected_city,
-        RangeFrom: this.RangeFrom,
-        RangeTo: this.RangeTo 
+        RangeFrom: this.RangeFrom
       })
       .then(res => {
         console.log('ok-?')
-        this.posts = res.result
+        console.log(res)
+        this.posts = res.result.data
         this.$q.loading.hide()
       })
       .catch(rej => {
@@ -425,22 +427,31 @@ export default {
         this.$q.loading.hide()
       })
     },
-    async getAdditionalPosts(){
+    async getAdditionalPosts(index, done){
       this.RangeFrom += 10
-      this.RangeTo += 10
+      console.log(this.RangeFrom)
 
       await ApiService.getPosts({
         Country: this.selected_country,
         City: this.selected_city,
-        RangeFrom: this.RangeFrom,
-        RangeTo: this.RangeTo 
+        RangeFrom: this.RangeFrom
       })
       .then(res => {
-        console.log('Push to list')
-        this.posts.push(res.result)
+        if(res.result.status == 204){
+          done(true)
+          return;
+        }
+        
+        if(this.posts){
+          for (let index = 0; index < res.result.data.length; index++) {
+            this.posts.push(res.result.data[index])
+          }
+          done()
+        }
       })
       .catch(rej => {
         console.log('error')
+        done()
       })
     }
 
