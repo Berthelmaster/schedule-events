@@ -33,7 +33,7 @@ namespace backend.Controllers
                     .Where(x => x.Country == geo.Country && x.City == geo.City)
                     .OrderBy(x => x.Id)
                     .Skip(geo.RangeFrom)
-                    .Take(geo.RangeTo)
+                    .Take(10)
                     .AsNoTracking()
                     .ToListAsync();
             }
@@ -43,7 +43,7 @@ namespace backend.Controllers
                     .Where(x => x.Country == geo.Country && x.City == geo.City)
                     .OrderBy(x => x.Id)
                     .Skip(geo.RangeFrom)
-                    .Take(geo.RangeTo)
+                    .Take(10)
                     .AsNoTracking()
                     .ToListAsync();
             }
@@ -53,14 +53,14 @@ namespace backend.Controllers
                     .Where(x => x.Country == geo.Country && x.City == geo.City)
                     .OrderBy(x => x.Id)
                     .Skip(geo.RangeFrom)
-                    .Take(geo.RangeTo)
+                    .Take(10)
                     .AsNoTracking()
                     .ToListAsync();
             }
 
             if(postList.Count == 0)
             {
-                return new NotFoundResult();
+                return new NoContentResult();
             }
 
             return new OkObjectResult(postList);
