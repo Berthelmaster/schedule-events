@@ -58,10 +58,7 @@ namespace backend.Controllers
                     .ToListAsync();
             }
 
-            if(postList.Count == 0)
-            {
-                return new NoContentResult();
-            }
+            if(postList.Count == 0) return new NoContentResult();
 
             return new OkObjectResult(postList);
         }
