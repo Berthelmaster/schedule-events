@@ -133,6 +133,21 @@ const ApiService = {
                 })
             })
         })
+    },
+    async getProfile(){
+        return new Promise(async (resolve, reject) => {
+            await axios.get(`${backendApi}/user/profile`)
+            .then(res => {
+                return resolve({
+                    result: res
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej.data
+                })
+            })
+        })
     }
 }
 
