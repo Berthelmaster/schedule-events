@@ -26,7 +26,9 @@ namespace backend.Controllers
             var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
             var claim = Decoder.DecodeJwt(token, Decoder.RequestedClaims.actort);
 
-            var user = await _context.Users.FindAsync(claim);
+            var id = int.Parse(claim);
+
+            var user = await _context.Users.FindAsync(id);
 
             if(user != null)
             {
