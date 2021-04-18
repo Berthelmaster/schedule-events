@@ -17,7 +17,8 @@
       </q-field>
       <q-field filled label="Is Approved" stack-label>
         <template v-slot:control>
-          <div class="self-center full-width no-outline" tabindex="3">{{profile.isApproved}}</div>
+          <div v-if="profile.isApproved" class="self-center full-width no-outline" tabindex="3">Yes</div>
+          <div v-if="!profile.isApproved" class="self-center full-width no-outline" tabindex="3">No</div>
         </template>
       </q-field>
       <q-field filled label="My role" stack-label>
