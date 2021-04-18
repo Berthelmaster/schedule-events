@@ -429,7 +429,6 @@ export default {
     },
     async getAdditionalPosts(index, done){
       this.RangeFrom += 10
-      console.log(this.RangeFrom)
 
       await ApiService.getPosts({
         Country: this.selected_country,
