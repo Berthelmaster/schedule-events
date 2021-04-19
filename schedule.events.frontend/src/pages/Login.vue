@@ -30,7 +30,7 @@ import localStorageService from '../storage/local.storage.service'
 import LocalStaticNames from '../storage/storage.static.names'
 
 export default {
-  name: 'PageIndex',
+  name: 'Frontpage',
 
   data () {
     return {
@@ -51,8 +51,6 @@ export default {
       .then(res => {
         // If Successful
         localStorageService.setWithExpiry(LocalStaticNames.USER_INFORMATION, res, 14400) // 10 days expiration
-
-        this.axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
 
         this.$q.loading.hide()
 

@@ -108,7 +108,7 @@ import ApiService from '../services/api.service';
 import { colors, Platform, QSpinnerGears } from 'quasar'
 
 export default {
-  name: 'PageIndex',
+  name: 'frontpage',
 
   data () {
     return {

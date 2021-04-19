@@ -92,7 +92,7 @@
       </q-drawer>
 
     <q-page-container>
-      <keep-alive>
+      <keep-alive include="frontpage">
         <router-view />
       </keep-alive>
     </q-page-container>
@@ -119,6 +119,11 @@ export default {
     }
   },
   computed: {
+    currentRouteName() {
+      console.log('Called')
+      console.log(this.$route.path)
+        return this.$route.path;
+    }
   },
   watch: {
     // call again the method if the route changes

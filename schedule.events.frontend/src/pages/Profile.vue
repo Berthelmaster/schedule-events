@@ -1,5 +1,5 @@
 <template>
-    <q-page class="flex-center q-pa-sm bg-grey-3">
+    <q-page class="flex-center q-pa-sm bg-grey-3" v-if="getProfile">
       <q-field filled label="Email" stack-label>
         <template v-slot:control>
           <div class="self-center full-width no-outline" tabindex="0">{{profile.email}}</div>
@@ -35,11 +35,18 @@ import ApiService from '../services/api.service';
 export default {
     data() {
         return{
-            profile: []
+            profile: {
+              email: '',
+              fullName: '',
+              birthday: '',
+              isApproved: false,
+              role: ''
+            }
         }
     },
-    methods: {
+    computed: {
         async getProfile(){
+          console.log('wqba')
             await ApiService.getProfile()
             .then(res => {
                 this.profile = res.result.data
@@ -49,8 +56,7 @@ export default {
             })
         }
     },
-    async created() {
-        await this.getProfile();
-    }
+    methods: {
+    },
 }
 </script>

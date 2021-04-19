@@ -54,7 +54,6 @@ import localStorageService from '../storage/local.storage.service'
 import { colors, Platform, QSpinnerGears } from 'quasar'
 
 export default {
-  name: 'PageIndex',
 
   data () {
     return {

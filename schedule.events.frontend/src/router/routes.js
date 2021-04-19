@@ -4,12 +4,12 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('src/pages/Frontpage.vue') },
-      { path: 'login', component: () => import('src/pages/Login.vue')},
-      { path: 'register', component: () => import('src/pages/Register.vue')},
-      { path: 'create-event', component: () => import('src/pages/CreateEvent.vue')},
-      { path: 'profile', component: () => import('src/pages/Profile.vue')},
-      { path: 'about-and-donate', component: () => import('src/pages/About.vue')}
+      { name: 'frontpage', path: '', component: () => import('src/pages/Frontpage.vue')},
+      { name: 'login', path: 'login', component: () => import('src/pages/Login.vue')},
+      { name: 'register',path: 'register', component: () => import('src/pages/Register.vue')},
+      { name: 'create-event', path: 'create-event', component: () => import('src/pages/CreateEvent.vue')},
+      { name: 'profile', path: 'profile', component: () => import('src/pages/Profile.vue')},
+      { name: 'about-and-donate', path: 'about-and-donate', component: () => import('src/pages/About.vue')}
     ],
   },
   {
