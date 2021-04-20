@@ -11,6 +11,7 @@ let backendApi = 'https://api.linkancestors.com'
 let localhost = 'https://localhost:44364'
 
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
+console.log('Fetch Token');
 
 const ApiService = {
     logIp() {
