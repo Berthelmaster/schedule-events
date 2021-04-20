@@ -12,4 +12,4 @@ RUN quasar build
 
 # production stage
 EXPOSE 80
-CMD ["quasar", "serve", "dist", "--port", "80"]
+CMD ["quasar", "serve", "dist/spa", "--port", "80"]
