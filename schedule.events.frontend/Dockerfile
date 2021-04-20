@@ -8,7 +8,8 @@ COPY . .
 # build stage
 FROM develop-stage as build-stage
 RUN yarn
+RUN quasar build
 
 # production stage
 EXPOSE 80
-CMD ["quasar", "serve"]
+CMD ["quasar", "serve", "dist"]
