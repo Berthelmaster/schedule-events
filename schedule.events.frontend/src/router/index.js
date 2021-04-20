@@ -30,7 +30,7 @@ export default function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from, next) => {
     console.log('called')
-
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorageService.getToken()}`;
     next()
   })
 
