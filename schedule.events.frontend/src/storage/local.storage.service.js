@@ -36,9 +36,6 @@ const localStorageService = {
 
         if(item == null) return null
 
-        console.log('Logging Token: ')
-        console.log(item["token"]);
-
         return item["token"]
     },
     isLoggedIn(){
