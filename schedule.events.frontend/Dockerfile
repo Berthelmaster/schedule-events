@@ -12,4 +12,4 @@ RUN quasar build
 
 # production stage
 EXPOSE 80
-CMD ["quasar", "serve", "-p" "80" "dist"]
+CMD ["quasar", "serve", "dist"]
