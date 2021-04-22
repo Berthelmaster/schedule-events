@@ -10,6 +10,6 @@ namespace backend.Models
         public int Id { get; set; }
         public string Identifier => Guid.NewGuid().ToString();
         public string Type { get; set; }
-        public DateTime Date => DateTime.UtcNow.AddHours(1);
+        public DateTime Date => DateTime.UtcNow.AddHours(2);
     }
 }
