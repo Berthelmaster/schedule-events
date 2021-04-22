@@ -89,5 +89,15 @@ namespace backend.Controllers
 
             return new BadRequestResult();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<Post>> GetPost([FromQuery] int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+
+            if (post == null) return new BadRequestResult();
+
+            return new OkObjectResult(post);
+        }
     }
 }
