@@ -93,7 +93,10 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<Post>> GetPost([FromQuery] int id)
         {
-            var post = await _context.Posts.FindAsync(id);
+            var post = await _context.Posts
+                .Include(x => x.Comments)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (post == null) return new BadRequestResult();
 
