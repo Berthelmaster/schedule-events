@@ -149,6 +149,21 @@ const ApiService = {
                 })
             })
         })
+    },
+    async getPost(id){
+        return new Promise(async (resolve, reject) => {
+            await axios.get(`${backendApi}/post?id=${id}`)
+            .then(res => {
+                return resolve({
+                    result: res
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej
+                })
+            })
+        })
     }
 }
 

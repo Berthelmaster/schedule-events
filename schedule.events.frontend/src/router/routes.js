@@ -10,7 +10,8 @@ const routes = [
       { name: 'register',path: 'register', component: Register},
       { name: 'create-event', path: 'create-event', component: () => import('src/pages/CreateEvent.vue')},
       { name: 'profile', path: 'profile', component: () => import('src/pages/Profile.vue')},
-      { name: 'about-and-donate', path: 'about-and-donate', component: () => import('src/pages/About.vue')}
+      { name: 'about-and-donate', path: 'about-and-donate', component: () => import('src/pages/About.vue')},
+      { name: 'view-event', path: 'view-event', component: () => import('src/pages/View-event.vue')}
     ],
   },
   {

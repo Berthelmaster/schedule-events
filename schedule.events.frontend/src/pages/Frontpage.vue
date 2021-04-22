@@ -49,6 +49,7 @@
             icon="place"
             class="absolute"
             style="top: 0; right: 12px; transform: translateY(-50%);"
+            @click="$router.push(`/view-event?id=${event.id}`)"
           />
 
           <div class="row no-wrap items-center">
