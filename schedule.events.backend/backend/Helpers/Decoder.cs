@@ -28,6 +28,8 @@ namespace backend.Helpers
             var tokenS = jsonToken as JwtSecurityToken;
             var _claim = tokenS.Claims.First(claim => claim.Type == request)?.Value;
 
+            if (_claim == null) return null;
+
             return _claim;
         }
 
