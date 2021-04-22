@@ -1,6 +1,5 @@
 <template>
     <q-page class="flex-center q-pa-sm bg-grey-3" v-if="getEvent">
-        {{post}}
         <div class="text-h3">
             <section class="center-it">{{post.title}}</section>
         </div>
@@ -33,7 +32,26 @@
             <section>
                 <div id="comments" class="text-h4">0 Comments</div>
                 <q-editor v-model="editor" min-height="5rem" />
+                <div class="topright">
+                    <q-btn push color="white" text-color="primary" label="Send" 
+                    style="top: 0; transform: translateY(-100%); height: 70px; width: 100px;"
+                    @click="PostComment"/>
+                </div>
             </section>
+        </div>
+
+        <q-separator />
+        
+        <div>
+            <section>
+                <div v-for="(comment, index) in comments.slice().reverse()" :key="index">
+                    {{comment}}
+                </div>
+            </section>
+        </div>
+
+        <div>
+            <h1>Hello</h1>
         </div>
     </q-page>
 </template>
@@ -51,7 +69,8 @@ export default {
           post: {
 
           },
-          editor: "I like this event..."
+          editor: "I like this event...",
+          comments: []
       }
   },
 
@@ -63,10 +82,44 @@ export default {
           .then(res => {
               console.log(res)
               this.post = res.result.data
+              this.comments = res.result.data.comments
           })
           .catch(rej => {
               console.log(rej)
           })
+      }
+  },
+
+  methods: {
+      async PostComment(){
+          let postObject = {
+              Content: this.editor,
+              PostId: parseInt(this.id)
+          }
+          await ApiService.postComment(postObject)
+          .then(res => {
+              console.log(res)
+              this.getEvent2()
+          })
+          .catch(rej => {
+              console.log(rej)
+          })
+      },
+      async getEvent2(){
+          console.log(this.id);
+
+          await ApiService.getPost(this.id)
+          .then(res => {
+              console.log(res)
+              this.post = res.result.data
+              this.comments = res.result.data.comments
+          })
+          .catch(rej => {
+              console.log(rej)
+          })
+      },
+      updateCommentElement(){
+          
       }
   }
 
@@ -82,5 +135,9 @@ export default {
   width: 50%;
   text-align: center;
   margin-bottom: 1rem;
+}
+.topright {
+    position: absolute;
+    right: 10px;
 }
 </style>

@@ -164,6 +164,21 @@ const ApiService = {
                 })
             })
         })
+    },
+    async postComment(postObject){
+        return new Promise(async (resolve, reject) => {
+            await axios.post(`${backendApi}/comment/add`, postObject)
+            .then(res => {
+                return resolve({
+                    result: res
+                })
+            })
+            .catch(rej => {
+                return reject({
+                    result: rej
+                })
+            })
+        })
     }
 }
 
