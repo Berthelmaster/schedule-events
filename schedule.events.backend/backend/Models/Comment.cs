@@ -9,7 +9,7 @@ namespace backend.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public DateTime Date => DateTime.UtcNow.AddHours(2);
+        public DateTime Date { get; set; }
         public string WrittenBy { get; set; }
 
         // EF Core Relations

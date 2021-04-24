@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using backend.Database;
 using backend.Helpers;
 using backend.Models;
@@ -37,6 +38,7 @@ namespace backend.Controllers
             {
                 Content = comment.Content,
                 WrittenBy = user.FullName,
+                Date = DateTime.UtcNow.AddHours(2),
                 UserId = id,
                 PostId = comment.PostId
             };
