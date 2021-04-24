@@ -48,7 +48,7 @@
                     <div class="commment-single rounded-borders">
                         <div>{{comment.writtenBy}} - {{comment.date}}</div>
                         <q-separator />
-                        <div>{{comment.content}}</div>
+                        <div v-html="comment.content"></div>
                     </div>
                 </div>
             </section>
