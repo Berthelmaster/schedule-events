@@ -74,6 +74,8 @@ namespace backend.Controllers
                 Description = post.Description,
                 Content = post.Content,
                 Date = post.Date,
+                Starts = post.Starts,
+                Ends = post.Ends,
                 IsPublic = true,
                 IsPublished = true,
                 Country = post.Country,

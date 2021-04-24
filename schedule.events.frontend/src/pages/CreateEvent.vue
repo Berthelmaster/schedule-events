@@ -10,6 +10,8 @@
                 <q-form class="q-gutter-md">
                 <q-input square filled clearable v-model="Event_Name" type="text" label="Event Name" />
                 <q-input square filled clearable v-model="Description" type="text" label="Description" />
+                <q-input square filled clearable v-model="Starts" type="text" label="Description" />
+                <q-input square filled clearable v-model="Ends" type="text" label="Description" />
                 <q-select square filled outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
                 <div v-if="cityList.length > 0">
                     <q-select square filled outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city"/>
@@ -309,7 +311,9 @@ export default {
       selected_city: 'default',
       cityList: Array(),
       isDesktop: !this.$q.platform.is.mobile,
-      file: ""
+      file: "",
+      Starts: "11 AM",
+      Ends: "8 PM"
     }
   },
   methods: {
@@ -361,6 +365,8 @@ export default {
         Description: this.Description,
         Content: this.content,
         Date: "2017/20/20",
+        Starts: this.Starts,
+        Ends: this.Ends,
         Country: this.selected_country,
         City: this.selected_city,
         Image: this.file

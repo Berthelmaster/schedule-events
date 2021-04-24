@@ -45,13 +45,13 @@
         <div>
             <section>
                 <div v-for="(comment, index) in comments.slice().reverse()" :key="index">
-                    {{comment}}
+                    <div class="commment-single rounded-borders">
+                        <div>{{comment.writtenBy}} - {{comment.date}}</div>
+                        <q-separator />
+                        <div>{{comment.content}}</div>
+                    </div>
                 </div>
             </section>
-        </div>
-
-        <div>
-            <h1>Hello</h1>
         </div>
     </q-page>
 </template>
@@ -139,5 +139,9 @@ export default {
 .topright {
     position: absolute;
     right: 10px;
+}
+.commment-single{
+    border-style:inherit;
+    padding-top: 10px;
 }
 </style>
