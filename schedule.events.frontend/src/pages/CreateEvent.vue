@@ -10,8 +10,8 @@
                 <q-form class="q-gutter-md">
                 <q-input square filled clearable v-model="Event_Name" type="text" label="Event Name" />
                 <q-input square filled clearable v-model="Description" type="text" label="Description" />
-                <q-input square filled clearable v-model="Starts" type="text" label="Description" />
-                <q-input square filled clearable v-model="Ends" type="text" label="Description" />
+                <q-input square filled v-model="Starts" type="time" label="Starts" />
+                <q-input square filled v-model="Ends" type="time" label="Ends" />
                 <q-select square filled outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
                 <div v-if="cityList.length > 0">
                     <q-select square filled outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city"/>
