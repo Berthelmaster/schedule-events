@@ -6,6 +6,9 @@
           <div class="col">
             <h3 style="margin-top: 0px">Search</h3>
           </div>
+          <div class="q-gutter-sm">
+            <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged" />
+          </div>
           <div class="col">
             <q-select rounded outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
           </div>
@@ -21,6 +24,9 @@
         <div v-else>
           <div class="col">
             <h3 style="margin-top: 0px; margin-bottom: 5px">Search</h3>
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged"/>
           </div>
           <div class="col" style="margin-top: 0px">
             <q-select rounded outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
@@ -368,8 +374,12 @@ export default {
       cityList: [],
       posts: [],
       stars: 4,
-      RangeFrom: 0
+      RangeFrom: 0,
+      show_all: true
     }
+  },
+  created() {
+    this.onShowAllChanged()
   },
   methods: {
     async onCountryChanged(v){
@@ -453,7 +463,39 @@ export default {
         console.log('error')
         done()
       })
+    },
+    async onShowAllChanged(value, evt){
+      console.log(value)
+
+      this.RangeFrom = 0
+
+      if(value == false){
+        this.posts = []
+      }
+
+      if(value == true || value == undefined){
+        await ApiService.getPosts({
+        Country: null,
+        City: null,
+        RangeFrom: this.RangeFrom
+      })
+      .then(res => {
+        console.log('ok-?')
+        console.log(res)
+        this.posts = res.result.data
+        this.$q.loading.hide()
+      })
+      .catch(rej => {
+        console.log("fuck-")
+        this.posts = []
+        this.$q.loading.hide()
+      })
+
+      }
+
+
     }
+
 
   },
   mounted () {
