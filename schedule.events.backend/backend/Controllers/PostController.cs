@@ -25,8 +25,6 @@ namespace backend.Controllers
         {
             List<Post> postList = new List<Post>();
 
-            if (geo.City == null && geo.Country == null) return new BadRequestResult();
-
             if(geo.City != null && geo.Country != null)
             {
                 postList = await _context.Posts
