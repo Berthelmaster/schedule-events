@@ -40,7 +40,7 @@ namespace backend.Controllers
             else if(geo.City == null)
             {
                 postList = await _context.Posts
-                    .Where(x => x.Country == geo.Country && x.City == geo.City)
+                    .Where(x => x.Country == geo.Country)
                     .OrderBy(x => x.Id)
                     .Skip(geo.RangeFrom)
                     .Take(10)
@@ -50,7 +50,6 @@ namespace backend.Controllers
             else
             {
                 postList = await _context.Posts
-                    .Where(x => x.Country == geo.Country && x.City == geo.City)
                     .OrderBy(x => x.Id)
                     .Skip(geo.RangeFrom)
                     .Take(10)
