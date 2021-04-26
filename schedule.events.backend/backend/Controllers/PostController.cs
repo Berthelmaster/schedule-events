@@ -35,7 +35,7 @@ namespace backend.Controllers
                     .AsNoTracking()
                     .ToListAsync();
             }
-            else if(geo.City == null)
+            else if(geo.Country != null)
             {
                 postList = await _context.Posts
                     .Where(x => x.Country == geo.Country)
