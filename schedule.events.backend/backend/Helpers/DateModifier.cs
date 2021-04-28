@@ -12,5 +12,10 @@ namespace backend.Helpers
         {
             return DateTime.ParseExact(date, "yyyy/MM/dd", null);
         }
+
+        public static string DateFromDateTime(DateTime datetime)
+        {
+            return datetime.ToString("yyyy/MM/dd");
+        }
     }
 }

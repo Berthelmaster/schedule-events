@@ -43,6 +43,8 @@ namespace backend
             services.AddDatabase(Configuration);
 
             services.AddBackgroundServices();
+            
+            services.AddHangfireJobs(Configuration);
         }
         // Test
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
