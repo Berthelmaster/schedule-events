@@ -17,6 +17,7 @@ namespace backend.Extensions
         {
             services.AddScoped<ITokenHandler, TokenHandler>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IHangfireJobsExtensions, IHangfireJobsExtensions>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
         }
