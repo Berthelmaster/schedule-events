@@ -20,7 +20,7 @@ namespace backend.Hangfire.Jobs.Recurring
                 Console.WriteLine(currentDate);
 
                 var shouldBeDeletedPosts =
-                    await context.Posts.Where(x => x.DateCreated <= currentDate).AsNoTracking().ToListAsync();
+                    await context.Posts.Where(x => x.DateStarts <= currentDate).AsNoTracking().ToListAsync();
 
                 foreach (var post in shouldBeDeletedPosts)
                 {
