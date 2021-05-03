@@ -53,7 +53,7 @@
 <script>
 import ApiService from '../services/api.service';
 import localStorageService from '../storage/local.storage.service'
-import { colors, Platform, QSpinnerGears } from 'quasar'
+import { colors, Platform, QSpinnerGears, date } from 'quasar'
 
 export default {
 
@@ -357,8 +357,8 @@ export default {
     },
     async createPost(){
       console.log('HIT!')
-      const current = new Date();
-      const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
+      let timeStamp = Date.now()
+      let formattedString = date.formatDate(timeStamp, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
       this.$q.loading.show({
         message: 'Creating event...'
       })
@@ -366,7 +366,7 @@ export default {
         Title: this.Event_Name,
         Description: this.Description,
         Content: this.content,
-        Date: date,
+        DateStarts: formattedString,
         Starts: this.Starts,
         Ends: this.Ends,
         Country: this.selected_country,
