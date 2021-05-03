@@ -357,6 +357,8 @@ export default {
     },
     async createPost(){
       console.log('HIT!')
+      const current = new Date();
+      const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
       this.$q.loading.show({
         message: 'Creating event...'
       })
@@ -364,7 +366,7 @@ export default {
         Title: this.Event_Name,
         Description: this.Description,
         Content: this.content,
-        Date: "2017/20/20",
+        Date: date,
         Starts: this.Starts,
         Ends: this.Ends,
         Country: this.selected_country,
