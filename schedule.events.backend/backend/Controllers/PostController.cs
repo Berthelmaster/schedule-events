@@ -70,7 +70,7 @@ namespace backend.Controllers
                 Title = post.Title,
                 Description = post.Description,
                 Content = post.Content,
-                Date = post.Date,
+                Date = DateTime.UtcNow.AddHours(1),
                 Starts = post.Starts,
                 Ends = post.Ends,
                 IsPublic = true,
