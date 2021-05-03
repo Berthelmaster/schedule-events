@@ -16,9 +16,11 @@ namespace backend.Hangfire.Jobs.Recurring
             await using (AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>())
             {
                 var currentDate = DateTime.UtcNow.AddDays(-7);
+                
+                Console.WriteLine(currentDate);
 
                 var shouldBeDeletedPosts =
-                    await context.Posts.Where(x => x.Date <= currentDate).AsNoTracking().ToListAsync();
+                    await context.Posts.Where(x => x.Date >= currentDate).AsNoTracking().ToListAsync();
 
                 foreach (var post in shouldBeDeletedPosts)
                 {
