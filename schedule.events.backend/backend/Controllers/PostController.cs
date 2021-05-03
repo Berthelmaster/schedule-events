@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Helpers;
 
 namespace backend.Controllers
 {
@@ -65,13 +66,16 @@ namespace backend.Controllers
         {
             if (post == null) return new BadRequestResult();
 
+            var o = post.DateStarts.ToString("yyyy-MM-dd");
+            var newDateTime = DateModifier.DateFromString(o);
+
             var createpost = new Post
             {
                 Title = post.Title,
                 Description = post.Description,
                 Content = post.Content,
                 DateCreated = DateTime.UtcNow.AddHours(1),
-                DateStarts = post.DateStarts,
+                DateStarts = newDateTime,
                 Starts = post.Starts,
                 Ends = post.Ends,
                 IsPublic = true,
