@@ -71,6 +71,7 @@ namespace backend.Controllers
                 Description = post.Description,
                 Content = post.Content,
                 DateCreated = DateTime.UtcNow.AddHours(1),
+                DateStarts = post.DateStarts,
                 Starts = post.Starts,
                 Ends = post.Ends,
                 IsPublic = true,
