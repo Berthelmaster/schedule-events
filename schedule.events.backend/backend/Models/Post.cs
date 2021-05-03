@@ -14,7 +14,8 @@ namespace backend.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateStarts { get; set; }
         public string Starts { get; set; }
         public string Ends { get; set; }
         public bool IsPublic { get; set; }
