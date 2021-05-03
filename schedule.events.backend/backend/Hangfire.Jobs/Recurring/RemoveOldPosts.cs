@@ -18,7 +18,7 @@ namespace backend.Hangfire.Jobs.Recurring
                 var currentDate = DateTime.UtcNow.AddDays(-7);
 
                 var shouldBeDeletedPosts =
-                    await context.Posts.Where(x => x.Date >= currentDate).AsNoTracking().ToListAsync();
+                    await context.Posts.Where(x => x.Date <= currentDate).AsNoTracking().ToListAsync();
 
                 foreach (var post in shouldBeDeletedPosts)
                 {
