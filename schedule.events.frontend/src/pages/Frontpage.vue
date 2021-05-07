@@ -7,7 +7,7 @@
             <h3 style="margin-top: 0px">Search</h3>
           </div>
           <div class="q-gutter-sm">
-            <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged" />
+            <q-checkbox class="show-all-checkbox" left-label v-model="show_all" label="Show all" @input="onShowAllChanged" />
           </div>
           <div class="col">
             <q-select rounded outlined :disable="show_all" v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
@@ -26,7 +26,7 @@
             <h3 style="margin-top: 0px; margin-bottom: 5px">Search</h3>
           </div>
           <div class="q-gutter-sm">
-            <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged"/>
+            <q-checkbox class="show-all-checkbox" left-label v-model="show_all" label="Show all" @input="onShowAllChanged"/>
           </div>
           <div class="col" style="margin-top: 0px">
             <q-select rounded outlined :disable="show_all" v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
@@ -528,5 +528,10 @@ export default {
   text-align: center;
   display: inline-block;
   vertical-align: middle;
+}
+
+.show-all-checkbox{
+  min-width: 56px !important;
+  min-height: 56px !important;
 }
 </style>
