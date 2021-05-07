@@ -17,7 +17,7 @@
               <q-select rounded outlined :disable="show_all" v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
             </div>
             <div v-if="cityList.length <= 0">
-              <q-select rounded outlined :disable="show_all" v-model="selected_city" disable :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all || cityList.length <= 0" v-model="selected_city" :options="cityList" label="Select city" />
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
               <q-select rounded outlined :disable="show_all" v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
             </div>
             <div v-if="cityList.length <= 0">
-              <q-select rounded outlined :disable="show_all" v-model="selected_city" disable :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all || cityList.length <= 0" v-model="selected_city" :options="cityList" label="Select city" />
             </div>
           </div>
         </div>
