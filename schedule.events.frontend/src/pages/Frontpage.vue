@@ -81,13 +81,26 @@
         </q-card-section>
 
         <q-separator />
-
+        <div class="row">
+                  <q-card-actions>
+          <q-btn flat round icon="event" />
+          <q-btn flat color="primary">
+            Attend
+          </q-btn>
+        </q-card-actions>
         <q-card-actions>
           <q-btn flat round icon="event" />
           <q-btn flat color="primary">
-            Reserve
+            Maybe
           </q-btn>
         </q-card-actions>
+        <q-card-actions>
+          <q-btn flat round icon="event" />
+          <q-btn flat color="primary">
+            Decline
+          </q-btn>
+        </q-card-actions>
+        </div>
       </q-card>
       </div>
       <template v-slot:loading>
