@@ -10,14 +10,14 @@
             <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged" />
           </div>
           <div class="col">
-            <q-select rounded outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
+            <q-select rounded outlined :disable="show_all" v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
           </div>
           <div class="col">
             <div v-if="cityList.length > 0">
-              <q-select rounded outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all" v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
             </div>
             <div v-if="cityList.length <= 0">
-              <q-select rounded outlined v-model="selected_city" disable :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all" v-model="selected_city" disable :options="cityList" label="Select city" />
             </div>
           </div>
         </div>
@@ -29,14 +29,14 @@
             <q-checkbox left-label v-model="show_all" label="Show all" @input="onShowAllChanged"/>
           </div>
           <div class="col" style="margin-top: 0px">
-            <q-select rounded outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
+            <q-select rounded outlined :disable="show_all" v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
           </div>
           <div class="col" style="margin-top: 0px">
             <div v-if="cityList.length > 0">
-              <q-select rounded outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all" v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city" />
             </div>
             <div v-if="cityList.length <= 0">
-              <q-select rounded outlined v-model="selected_city" disable :options="cityList" label="Select city" />
+              <q-select rounded outlined :disable="show_all" v-model="selected_city" disable :options="cityList" label="Select city" />
             </div>
           </div>
         </div>

@@ -8,13 +8,33 @@
             <q-card square bordered class="q-pa-lg shadow-1">
             <q-card-section v-bind:class="{ activeDesktop: isDesktop}">
                 <q-form class="q-gutter-md">
-                <q-input square filled clearable v-model="Event_Name" type="text" label="Event Name" />
-                <q-input square filled clearable v-model="Description" type="text" label="Description" />
-                <q-input square filled v-model="Starts" type="time" label="Starts" />
-                <q-input square filled v-model="Ends" type="time" label="Ends" />
-                <q-select square filled outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
+                <q-input square filled :rules="[val => !!val || 'Field is required']"
+                 clearable v-model="Event_Name" type="text" label="Event Name" />
+                <q-input square filled :rules="[val => !!val || 'Field is required']"
+                 clearable v-model="Description" type="text" label="Description" />
+                <q-input square filled :rules="[val => !!val || 'Field is required']"
+                 v-model="StartsDate" mask="date" label="Select date">
+                  <template v-slot:append>
+                    <q-icon name="event" class="cursor-pointer">
+                      <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
+                          <q-date v-model="StartsDate">
+                          <div class="row items-center justify-end">
+                              <q-btn v-close-popup label="Close" color="primary" flat />
+                          </div>
+                          </q-date>
+                      </q-popup-proxy>
+                    </q-icon>
+                  </template>
+                </q-input>
+                <q-input square filled :rules="[val => !!val || 'Field is required']"
+                 v-model="Starts" type="time" label="Starts" />
+                <q-input square filled :rules="[val => !!val || 'Field is required']"
+                 v-model="Ends" type="time" label="Ends" />
+                <q-select square filled :rules="[val => !!val || 'Field is required']"
+                 outlined v-model="selected_country" @input="v => { onCountryChanged(v) }" :options="countryList" label="Select country" />
                 <div v-if="cityList.length > 0">
-                    <q-select square filled outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city"/>
+                    <q-select square filled :rules="[val => !!val || 'Field is required']"
+                     outlined v-model="selected_city" @input="v => { onCityChanged(v) }" :options="cityList" label="Select city"/>
                 </div>
                 <div>
                   <q-uploader
@@ -313,7 +333,8 @@ export default {
       isDesktop: !this.$q.platform.is.mobile,
       file: "",
       Starts: "11 AM",
-      Ends: "8 PM"
+      Ends: "8 PM",
+      StartsDate: ""
     }
   },
   methods: {
